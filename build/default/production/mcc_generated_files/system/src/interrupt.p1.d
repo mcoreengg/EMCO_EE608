@@ -9,6 +9,7 @@ mcc_generated_files/system/src/../../system/../uart/eusart1.h  \
 mcc_generated_files/system/src/../../system/../uart/../system/system.h  \
 mcc_generated_files/system/src/../../system/../uart/uart_drv_interface.h  \
 mcc_generated_files/system/src/../../system/../uart/uart_types.h  \
+mcc_generated_files/system/src/../../system/../adc/adc.h  \
 mcc_generated_files/system/src/../../system/../timer/tmr0.h  \
 mcc_generated_files/system/src/../../system/../timer/tmr0_deprecated.h  \
 mcc_generated_files/system/src/../../system/../timer/tmr1.h  \

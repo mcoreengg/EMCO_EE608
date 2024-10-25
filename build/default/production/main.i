@@ -20544,7 +20544,7 @@ void CLOCK_Initialize(void);
 # 42 "./mcc_generated_files/system/system.h" 2
 
 # 1 "./mcc_generated_files/system/../system/pins.h" 1
-# 718 "./mcc_generated_files/system/../system/pins.h"
+# 738 "./mcc_generated_files/system/../system/pins.h"
 void PIN_MANAGER_Initialize (void);
 
 
@@ -20998,6 +20998,73 @@ int getch(void);
 void putch(char txData);
 # 44 "./mcc_generated_files/system/../uart/../system/system.h" 2
 
+# 1 "./mcc_generated_files/system/../adc/adc.h" 1
+# 45 "./mcc_generated_files/system/../adc/adc.h"
+typedef uint16_t adc_result_t;
+
+
+
+
+
+
+typedef struct
+{
+    adc_result_t adcResult1;
+    adc_result_t adcResult2;
+} adc_sync_double_result_t;
+
+
+
+
+
+
+typedef enum
+{
+    posChannel_CTMU = 0x1c,
+    posChannel_Temp_diode = 0x1d,
+    posChannel_Vdd_core = 0x1e,
+    posChannel_1_024V_bandgap = 0x1f
+} adc_posChannel_t;
+
+
+
+
+
+
+typedef enum
+{
+    negChannel_AVss = 0x0
+} adc_negChannel_t;
+# 91 "./mcc_generated_files/system/../adc/adc.h"
+void IP1_ADC_Initialize(void);
+# 100 "./mcc_generated_files/system/../adc/adc.h"
+void ADC_SetPositiveChannel(adc_posChannel_t channel);
+# 109 "./mcc_generated_files/system/../adc/adc.h"
+void ADC_SetNegativeChannel(adc_negChannel_t channel);
+
+
+
+
+
+
+
+void IP1_ADC_StartConversion(void);
+# 126 "./mcc_generated_files/system/../adc/adc.h"
+_Bool IP1_ADC_IsConversionDone(void);
+
+
+
+
+
+
+
+adc_result_t IP1_ADC_GetConversionResult(void);
+# 145 "./mcc_generated_files/system/../adc/adc.h"
+adc_result_t IP1_ADC_GetConversion(adc_posChannel_t posChannel,adc_negChannel_t negChannel);
+# 154 "./mcc_generated_files/system/../adc/adc.h"
+void IP1_ADC_TemperatureAcquisitionDelay(void);
+# 45 "./mcc_generated_files/system/../uart/../system/system.h" 2
+
 # 1 "./mcc_generated_files/system/../system/interrupt.h" 1
 # 109 "./mcc_generated_files/system/../system/interrupt.h"
 void INTERRUPT_Initialize (void);
@@ -21041,7 +21108,7 @@ void INT3_SetInterruptHandler(void (* InterruptHandler)(void));
 extern void (*INT3_InterruptHandler)(void);
 # 454 "./mcc_generated_files/system/../system/interrupt.h"
 void INT3_DefaultInterruptHandler(void);
-# 45 "./mcc_generated_files/system/../uart/../system/system.h" 2
+# 46 "./mcc_generated_files/system/../uart/../system/system.h" 2
 
 
 # 1 "./mcc_generated_files/system/../timer/tmr0.h" 1
@@ -21112,7 +21179,7 @@ void TMR0_OverflowISR(void);
 
 
  void TMR0_OverflowCallbackRegister(void (* CallbackHandler)(void));
-# 47 "./mcc_generated_files/system/../uart/../system/system.h" 2
+# 48 "./mcc_generated_files/system/../uart/../system/system.h" 2
 
 # 1 "./mcc_generated_files/system/../timer/tmr1.h" 1
 # 41 "./mcc_generated_files/system/../timer/tmr1.h"
@@ -21204,10 +21271,38 @@ void TMR1_OverflowStatusClear(void);
 
 
  void TMR1_GateCallbackRegister(void (* CallbackHandler)(void));
-# 48 "./mcc_generated_files/system/../uart/../system/system.h" 2
-# 57 "./mcc_generated_files/system/../uart/../system/system.h"
+# 49 "./mcc_generated_files/system/../uart/../system/system.h" 2
+# 58 "./mcc_generated_files/system/../uart/../system/system.h"
 void SYSTEM_Initialize(void);
 # 35 "main.c" 2
+
+# 1 "./mcc_generated_files/timer/delay.h" 1
+# 44 "./mcc_generated_files/timer/delay.h"
+void DELAY_milliseconds(uint16_t milliseconds);
+
+
+
+
+
+
+
+void DELAY_microseconds(uint16_t microseconds);
+# 36 "main.c" 2
+
+# 1 "./seg_display.h" 1
+# 17 "./seg_display.h"
+void display_init(void);
+void format_data_to_display(uint8_t bcdval, uint32_t counterval);
+void display(void);
+# 37 "main.c" 2
+
+# 1 "./counter_calc.h" 1
+# 15 "./counter_calc.h"
+void counter_calc(void);
+# 38 "main.c" 2
+
+
+
 
 
 
@@ -21215,25 +21310,45 @@ void SYSTEM_Initialize(void);
 
 uint16_t timer0_counter = 0;
 uint16_t timer1_counter = 0;
+extern uint8_t digitval[8];
+
+extern uint8_t bcdval;
+extern uint8_t prev_bcdval;
+extern uint32_t cum_counter;
+extern uint32_t inc_counter;
+extern uint32_t dec_counter;
+
+void MyTimer0Callback(void);
+void MyTimer1Callback(void);
+void channel_switch(uint8_t ch);
+void convert_bcd_ext_inp_to_bcdval();
+
+uint8_t BCD_INP[8]={0};
+
 
 void MyTimer0Callback(void){
     timer0_counter++;
-    if(timer0_counter>200){
+    if(timer0_counter>500){
         timer0_counter=0;
-        do { LATAbits.LATA1 = ~LATAbits.LATA1; } while(0);
     }
+    display();
 }
+
 
 void MyTimer1Callback(void){
     timer1_counter++;
-    if(timer1_counter>5){
+    if(timer1_counter>50){
         timer1_counter=0;
-        do { LATAbits.LATA2 = ~LATAbits.LATA2; } while(0);
     }
 }
 
+
+
 int main(void)
 {
+    uint16_t adcval;
+    uint8_t i;
+
     SYSTEM_Initialize();
 
 
@@ -21257,14 +21372,62 @@ int main(void)
 
 
     TMR0_OverflowCallbackRegister(MyTimer0Callback);
-    TMR0_OverflowCallbackRegister(MyTimer1Callback);
+    TMR1_OverflowCallbackRegister(MyTimer1Callback);
+
     TMR0_TMRInterruptEnable();
     TMR1_TMRInterruptEnable();
     TMR0_Start();
     TMR1_Start();
-
+    display_init();
     while(1)
     {
+        for(i=0;i<=7;i++){
+            channel_switch(i);
+            DELAY_milliseconds(5);
+            adcval = IP1_ADC_GetConversion(0,0);
+            if(adcval>800)
+                BCD_INP[i] = 1;
+            else{
+                BCD_INP[i] = 0;
+            }
+        }
+        convert_bcd_ext_inp_to_bcdval();
 
+        if(cum_counter>999999)
+            cum_counter=0;
+        if(bcdval>=64)
+            bcdval = 64;
+        format_data_to_display(bcdval, adcval);
     }
+}
+
+void channel_switch(uint8_t ch)
+{
+
+    if(ch&0x01)
+    do { LATEbits.LATE0 = 1; } while(0);
+    else
+    do { LATEbits.LATE0 = 0; } while(0);
+
+    if((ch&0x02)>>1)
+    do { LATEbits.LATE1 = 1; } while(0);
+    else
+    do { LATEbits.LATE1 = 0; } while(0);
+
+    if((ch&0x04)>>2)
+    do { LATEbits.LATE2 = 1; } while(0);
+    else
+    do { LATEbits.LATE2 = 0; } while(0);
+
+}
+void convert_bcd_ext_inp_to_bcdval(void)
+{
+    bcdval = ((BCD_INP[0]) & 0x01)|
+                ((BCD_INP[1]<<1) & 0x02)|
+    ((BCD_INP[2]<<2) & 0x04)|
+          ((BCD_INP[3]<<3) & 0x08)|
+          ((BCD_INP[4]<<4) & 0x10)|
+          ((BCD_INP[5]<<5) & 0x20)|
+          ((BCD_INP[6]<<6) & 0x40)|
+       ((BCD_INP[7]<<7) & 0x80);
 }

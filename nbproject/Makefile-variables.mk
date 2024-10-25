@@ -6,5 +6,5 @@
 CND_BASEDIR=`pwd`
 # default configuration
 CND_ARTIFACT_DIR_default=dist/default/production
-CND_ARTIFACT_NAME_default=EM608_FirmwareV1.0.X.production.hex
-CND_ARTIFACT_PATH_default=dist/default/production/EM608_FirmwareV1.0.X.production.hex
+CND_ARTIFACT_NAME_default=EMCO_EE608.production.hex
+CND_ARTIFACT_PATH_default=dist/default/production/EMCO_EE608.production.hex

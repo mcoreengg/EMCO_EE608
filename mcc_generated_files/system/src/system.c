@@ -43,6 +43,7 @@ void SYSTEM_Initialize(void)
     TMR0_Initialize();
     TMR1_Initialize();
     EUSART1_Initialize();
+    IP1_ADC_Initialize();
     INTERRUPT_Initialize();
 }
 

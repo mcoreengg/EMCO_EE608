@@ -20603,11 +20603,9 @@ void TMR0_OverflowISR(void);
 # 38 "mcc_generated_files/timer/src/tmr0.c" 2
 
 
-
 static volatile uint16_t tmr0PeriodCount;
 static void (*TMR0_OverflowCallback)(void);
 static void TMR0_DefaultOverflowCallback(void);
-
 
 
 
@@ -20618,8 +20616,8 @@ void TMR0_Initialize(void)
 
     T0CONbits.T08BIT = 0;
     TMR0H = 0xFF;
-    TMR0L = 0xB2;
-    tmr0PeriodCount = 65458U;
+    TMR0L = 0xF1;
+    tmr0PeriodCount = 65521U;
     TMR0_OverflowCallbackRegister(TMR0_DefaultOverflowCallback);
 
     INTCONbits.TMR0IF = 0;

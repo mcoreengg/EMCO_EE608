@@ -20716,7 +20716,7 @@ void CLOCK_Initialize(void);
 # 42 "mcc_generated_files/uart/src/../../system/system.h" 2
 
 # 1 "mcc_generated_files/uart/src/../../system/../system/pins.h" 1
-# 718 "mcc_generated_files/uart/src/../../system/../system/pins.h"
+# 738 "mcc_generated_files/uart/src/../../system/../system/pins.h"
 void PIN_MANAGER_Initialize (void);
 
 
@@ -20730,6 +20730,73 @@ void PIN_MANAGER_IOC(void);
 
 # 1 "mcc_generated_files/uart/src/../../system/../uart/eusart1.h" 1
 # 44 "mcc_generated_files/uart/src/../../system/system.h" 2
+
+# 1 "mcc_generated_files/uart/src/../../system/../adc/adc.h" 1
+# 45 "mcc_generated_files/uart/src/../../system/../adc/adc.h"
+typedef uint16_t adc_result_t;
+
+
+
+
+
+
+typedef struct
+{
+    adc_result_t adcResult1;
+    adc_result_t adcResult2;
+} adc_sync_double_result_t;
+
+
+
+
+
+
+typedef enum
+{
+    posChannel_CTMU = 0x1c,
+    posChannel_Temp_diode = 0x1d,
+    posChannel_Vdd_core = 0x1e,
+    posChannel_1_024V_bandgap = 0x1f
+} adc_posChannel_t;
+
+
+
+
+
+
+typedef enum
+{
+    negChannel_AVss = 0x0
+} adc_negChannel_t;
+# 91 "mcc_generated_files/uart/src/../../system/../adc/adc.h"
+void IP1_ADC_Initialize(void);
+# 100 "mcc_generated_files/uart/src/../../system/../adc/adc.h"
+void ADC_SetPositiveChannel(adc_posChannel_t channel);
+# 109 "mcc_generated_files/uart/src/../../system/../adc/adc.h"
+void ADC_SetNegativeChannel(adc_negChannel_t channel);
+
+
+
+
+
+
+
+void IP1_ADC_StartConversion(void);
+# 126 "mcc_generated_files/uart/src/../../system/../adc/adc.h"
+_Bool IP1_ADC_IsConversionDone(void);
+
+
+
+
+
+
+
+adc_result_t IP1_ADC_GetConversionResult(void);
+# 145 "mcc_generated_files/uart/src/../../system/../adc/adc.h"
+adc_result_t IP1_ADC_GetConversion(adc_posChannel_t posChannel,adc_negChannel_t negChannel);
+# 154 "mcc_generated_files/uart/src/../../system/../adc/adc.h"
+void IP1_ADC_TemperatureAcquisitionDelay(void);
+# 45 "mcc_generated_files/uart/src/../../system/system.h" 2
 
 # 1 "mcc_generated_files/uart/src/../../system/../system/interrupt.h" 1
 # 109 "mcc_generated_files/uart/src/../../system/../system/interrupt.h"
@@ -20774,7 +20841,7 @@ void INT3_SetInterruptHandler(void (* InterruptHandler)(void));
 extern void (*INT3_InterruptHandler)(void);
 # 454 "mcc_generated_files/uart/src/../../system/../system/interrupt.h"
 void INT3_DefaultInterruptHandler(void);
-# 45 "mcc_generated_files/uart/src/../../system/system.h" 2
+# 46 "mcc_generated_files/uart/src/../../system/system.h" 2
 
 
 # 1 "mcc_generated_files/uart/src/../../system/../timer/tmr0.h" 1
@@ -20845,7 +20912,7 @@ void TMR0_OverflowISR(void);
 
 
  void TMR0_OverflowCallbackRegister(void (* CallbackHandler)(void));
-# 47 "mcc_generated_files/uart/src/../../system/system.h" 2
+# 48 "mcc_generated_files/uart/src/../../system/system.h" 2
 
 # 1 "mcc_generated_files/uart/src/../../system/../timer/tmr1.h" 1
 # 41 "mcc_generated_files/uart/src/../../system/../timer/tmr1.h"
@@ -20937,8 +21004,8 @@ void TMR1_OverflowStatusClear(void);
 
 
  void TMR1_GateCallbackRegister(void (* CallbackHandler)(void));
-# 48 "mcc_generated_files/uart/src/../../system/system.h" 2
-# 57 "mcc_generated_files/uart/src/../../system/system.h"
+# 49 "mcc_generated_files/uart/src/../../system/system.h" 2
+# 58 "mcc_generated_files/uart/src/../../system/system.h"
 void SYSTEM_Initialize(void);
 # 46 "mcc_generated_files/uart/src/../../system/../uart/eusart1.h" 2
 

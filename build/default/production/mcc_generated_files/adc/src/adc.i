@@ -20563,8 +20563,7 @@ typedef enum
     posChannel_CTMU = 0x1c,
     posChannel_Temp_diode = 0x1d,
     posChannel_Vdd_core = 0x1e,
-    posChannel_1_024V_bandgap = 0x1f,
-    IP1_ADC = 0x0
+    posChannel_1_024V_bandgap = 0x1f
 } adc_posChannel_t;
 
 
@@ -20574,14 +20573,13 @@ typedef enum
 
 typedef enum
 {
-    negChannel_AVss = 0x0,
-    IP1_ADC = 0x1
+    negChannel_AVss = 0x0
 } adc_negChannel_t;
-# 93 "mcc_generated_files/adc/src/../adc.h"
+# 91 "mcc_generated_files/adc/src/../adc.h"
 void IP1_ADC_Initialize(void);
-# 102 "mcc_generated_files/adc/src/../adc.h"
+# 100 "mcc_generated_files/adc/src/../adc.h"
 void ADC_SetPositiveChannel(adc_posChannel_t channel);
-# 111 "mcc_generated_files/adc/src/../adc.h"
+# 109 "mcc_generated_files/adc/src/../adc.h"
 void ADC_SetNegativeChannel(adc_negChannel_t channel);
 
 
@@ -20591,7 +20589,7 @@ void ADC_SetNegativeChannel(adc_negChannel_t channel);
 
 
 void IP1_ADC_StartConversion(void);
-# 128 "mcc_generated_files/adc/src/../adc.h"
+# 126 "mcc_generated_files/adc/src/../adc.h"
 _Bool IP1_ADC_IsConversionDone(void);
 
 
@@ -20601,54 +20599,24 @@ _Bool IP1_ADC_IsConversionDone(void);
 
 
 adc_result_t IP1_ADC_GetConversionResult(void);
-# 147 "mcc_generated_files/adc/src/../adc.h"
+# 145 "mcc_generated_files/adc/src/../adc.h"
 adc_result_t IP1_ADC_GetConversion(adc_posChannel_t posChannel,adc_negChannel_t negChannel);
-# 156 "mcc_generated_files/adc/src/../adc.h"
+# 154 "mcc_generated_files/adc/src/../adc.h"
 void IP1_ADC_TemperatureAcquisitionDelay(void);
-
-
-
-
-
-
-
-void IP1_ADC_ISR(void);
-
-
-
-
-
-
-
-void IP1_ADC_SetInterruptHandler(void (* InterruptHandler)(void));
 # 39 "mcc_generated_files/adc/src/adc.c" 2
 
 # 1 "mcc_generated_files/adc/src/../../system/clock.h" 1
 # 56 "mcc_generated_files/adc/src/../../system/clock.h"
 void CLOCK_Initialize(void);
 # 40 "mcc_generated_files/adc/src/adc.c" 2
-
-
-
-
-
-
-
-
-void (*IP1_ADC_InterruptHandler)(void);
-static void IP1_ADC_DefaultInterruptHandler(void);
-
-
-
-
-
+# 53 "mcc_generated_files/adc/src/adc.c"
 void IP1_ADC_Initialize(void)
 {
 
-    ADCON1 = 0x1;
+    ADCON1 = 0x0;
 
 
-    ADCON2 = 0x3D;
+    ADCON2 = 0x6;
 
 
     ADRESL = 0x0;
@@ -20663,11 +20631,6 @@ void IP1_ADC_Initialize(void)
 
     PIR1bits.ADIF = 0;
 
-
-    IP1_ADC_SetInterruptHandler(IP1_ADC_DefaultInterruptHandler);
-
-
-    PIE1bits.ADIE = 1;
 }
 void ADC_SetPositiveChannel(adc_posChannel_t channel)
 {
@@ -20726,26 +20689,4 @@ adc_result_t IP1_ADC_GetConversion(adc_posChannel_t posChannel,adc_negChannel_t 
 void IP1_ADC_TemperatureAcquisitionDelay(void)
 {
     _delay((unsigned long)((200)*(8000000U/4000000.0)));
-}
-
-void IP1_ADC_ISR(void)
-{
-
-    PIR1bits.ADIF = 0;
-
- if(IP1_ADC_InterruptHandler)
-    {
-        IP1_ADC_InterruptHandler();
-    }
-}
-
-void IP1_ADC_SetInterruptHandler(void (* InterruptHandler)(void))
-{
-    IP1_ADC_InterruptHandler = InterruptHandler;
-}
-
-static void IP1_ADC_DefaultInterruptHandler(void)
-{
-
-
 }

@@ -2,8 +2,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "56 mcc_generated_files/system/src/../../system/clock.h
 [; ;mcc_generated_files/system/src/../../system/clock.h: 56: void CLOCK_Initialize(void);
 [v _CLOCK_Initialize `(v ~T0 @X0 0 ef ]
-"718 mcc_generated_files/system/src/../../system/pins.h
-[; ;mcc_generated_files/system/src/../../system/pins.h: 718: void PIN_MANAGER_Initialize (void);
+"738 mcc_generated_files/system/src/../../system/pins.h
+[; ;mcc_generated_files/system/src/../../system/pins.h: 738: void PIN_MANAGER_Initialize (void);
 [v _PIN_MANAGER_Initialize `(v ~T0 @X0 0 ef ]
 "229 mcc_generated_files/system/src/../../timer/tmr0.h
 [; ;mcc_generated_files/system/src/../../timer/tmr0.h: 229: void TMR0_Initialize(void);
@@ -14,6 +14,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "119 mcc_generated_files/system/src/../../uart/eusart1.h
 [; ;mcc_generated_files/system/src/../../uart/eusart1.h: 119: void EUSART1_Initialize(void);
 [v _EUSART1_Initialize `(v ~T0 @X0 0 ef ]
+"91 mcc_generated_files/system/src/../../adc/adc.h
+[; ;mcc_generated_files/system/src/../../adc/adc.h: 91: void IP1_ADC_Initialize(void);
+[v _IP1_ADC_Initialize `(v ~T0 @X0 0 ef ]
 "109 mcc_generated_files/system/src/../../system/interrupt.h
 [; ;mcc_generated_files/system/src/../../system/interrupt.h: 109: void INTERRUPT_Initialize (void);
 [v _INTERRUPT_Initialize `(v ~T0 @X0 0 ef ]
@@ -1433,9 +1436,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;mcc_generated_files/system/src/system.c: 45:     EUSART1_Initialize();
 [e ( _EUSART1_Initialize ..  ]
 "46
-[; ;mcc_generated_files/system/src/system.c: 46:     INTERRUPT_Initialize();
-[e ( _INTERRUPT_Initialize ..  ]
+[; ;mcc_generated_files/system/src/system.c: 46:     IP1_ADC_Initialize();
+[e ( _IP1_ADC_Initialize ..  ]
 "47
-[; ;mcc_generated_files/system/src/system.c: 47: }
-[e :UE 1547 ]
+[; ;mcc_generated_files/system/src/system.c: 47:     INTERRUPT_Initialize();
+[e ( _INTERRUPT_Initialize ..  ]
+"48
+[; ;mcc_generated_files/system/src/system.c: 48: }
+[e :UE 1548 ]
 }

@@ -37,11 +37,9 @@
 #include <xc.h>
 #include "../tmr0.h"
 
-
 static volatile uint16_t tmr0PeriodCount;
 static void (*TMR0_OverflowCallback)(void);
 static void TMR0_DefaultOverflowCallback(void);
-
 
 /**
   Section: TMR0 APIs
@@ -51,9 +49,9 @@ void TMR0_Initialize(void)
 {
     //Enable 16bit timer mode before assigning value to TMR0H
     T0CONbits.T08BIT = 0;
-    TMR0H = 0xFF;         // Period 9.984ms; Frequency 7812Hz; Count 65458
-    TMR0L = 0xB2;
-    tmr0PeriodCount = 65458U;
+    TMR0H = 0xFF;         // Period 1.92ms; Frequency 7812Hz; Count 65521
+    TMR0L = 0xF1;
+    tmr0PeriodCount = 65521U;
     TMR0_OverflowCallbackRegister(TMR0_DefaultOverflowCallback);
     
     INTCONbits.TMR0IF = 0;	   

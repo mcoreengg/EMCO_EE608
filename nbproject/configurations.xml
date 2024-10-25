@@ -7,6 +7,9 @@
       <logicalFolder name="MCC Generated Files"
                      displayName="MCC Generated Files"
                      projectFiles="true">
+        <logicalFolder name="adc" displayName="adc" projectFiles="true">
+          <itemPath>mcc_generated_files/adc/adc.h</itemPath>
+        </logicalFolder>
         <logicalFolder name="generic_driver_interfaces"
                        displayName="generic_driver_interfaces"
                        projectFiles="true">
@@ -32,6 +35,9 @@
           <itemPath>mcc_generated_files/uart/eusart1.h</itemPath>
         </logicalFolder>
       </logicalFolder>
+      <itemPath>seg_display.h</itemPath>
+      <itemPath>menu.h</itemPath>
+      <itemPath>counter_calc.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -49,6 +55,11 @@
       <logicalFolder name="MCC Generated Files"
                      displayName="MCC Generated Files"
                      projectFiles="true">
+        <logicalFolder name="adc" displayName="adc" projectFiles="true">
+          <logicalFolder name="src" displayName="src" projectFiles="true">
+            <itemPath>mcc_generated_files/adc/src/adc.c</itemPath>
+          </logicalFolder>
+        </logicalFolder>
         <logicalFolder name="system" displayName="system" projectFiles="true">
           <logicalFolder name="src" displayName="src" projectFiles="true">
             <itemPath>mcc_generated_files/system/src/config_bits.c</itemPath>
@@ -72,7 +83,10 @@
         </logicalFolder>
       </logicalFolder>
       <itemPath>main.c</itemPath>
-      <itemPath>bsp.c</itemPath>
+      <itemPath>seg_dsplay.c</itemPath>
+      <itemPath>meas_bcd.c</itemPath>
+      <itemPath>counter_calc.c</itemPath>
+      <itemPath>menu.c</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
