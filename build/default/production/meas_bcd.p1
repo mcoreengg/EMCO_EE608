@@ -1469,8 +1469,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;meas_bcd.c: 19:             channel_switch(i);
 [e ( _channel_switch (1 _i ]
 "20
-[; ;meas_bcd.c: 20:             DELAY_milliseconds(5);
-[e ( _DELAY_milliseconds (1 -> -> 5 `i `us ]
+[; ;meas_bcd.c: 20:             DELAY_milliseconds(50);
+[e ( _DELAY_milliseconds (1 -> -> 50 `i `us ]
 "21
 [; ;meas_bcd.c: 21:             adcval = IP1_ADC_GetConversion(0,0);
 [e = _adcval ( _IP1_ADC_GetConversion (2 , -> -> 0 `i `E12883 -> -> 0 `i `E12889 ]
@@ -1517,92 +1517,80 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;meas_bcd.c: 31: {
 [f ]
 "33
-[; ;meas_bcd.c: 33:     if(ch&0x01)
-[e $ ! != & -> _ch `i -> 1 `i -> 0 `i 1556  ]
-"34
-[; ;meas_bcd.c: 34:     do { LATEbits.LATE0 = 1; } while(0);
-[e :U 1559 ]
-{
-[e = . . _LATEbits 0 0 -> -> 1 `i `uc ]
-}
+[; ;meas_bcd.c: 33:     do { LATEbits.LATE0 = 0; } while(0);
 [e :U 1558 ]
-[e $U 1560  ]
-"35
-[; ;meas_bcd.c: 35:     else
-[e :U 1556 ]
-"36
-[; ;meas_bcd.c: 36:     do { LATEbits.LATE0 = 0; } while(0);
-[e :U 1563 ]
 {
 [e = . . _LATEbits 0 0 -> -> 0 `i `uc ]
 }
-[e :U 1562 ]
-[e :U 1560 ]
-"38
-[; ;meas_bcd.c: 38:     if((ch&0x02)>>1)
-[e $ ! != >> & -> _ch `i -> 2 `i -> 1 `i -> 0 `i 1564  ]
-"39
-[; ;meas_bcd.c: 39:     do { LATEbits.LATE1 = 1; } while(0);
-[e :U 1567 ]
-{
-[e = . . _LATEbits 0 1 -> -> 1 `i `uc ]
-}
-[e :U 1566 ]
-[e $U 1568  ]
-"40
-[; ;meas_bcd.c: 40:     else
-[e :U 1564 ]
-"41
-[; ;meas_bcd.c: 41:     do { LATEbits.LATE1 = 0; } while(0);
-[e :U 1571 ]
+[e :U 1557 ]
+"34
+[; ;meas_bcd.c: 34:     do { LATEbits.LATE1 = 0; } while(0);
+[e :U 1561 ]
 {
 [e = . . _LATEbits 0 1 -> -> 0 `i `uc ]
 }
-[e :U 1570 ]
-[e :U 1568 ]
-"43
-[; ;meas_bcd.c: 43:     if((ch&0x04)>>2)
-[e $ ! != >> & -> _ch `i -> 4 `i -> 2 `i -> 0 `i 1572  ]
-"44
-[; ;meas_bcd.c: 44:     do { LATEbits.LATE2 = 1; } while(0);
-[e :U 1575 ]
-{
-[e = . . _LATEbits 0 2 -> -> 1 `i `uc ]
-}
-[e :U 1574 ]
-[e $U 1576  ]
-"45
-[; ;meas_bcd.c: 45:     else
-[e :U 1572 ]
-"46
-[; ;meas_bcd.c: 46:     do { LATEbits.LATE2 = 0; } while(0);
-[e :U 1579 ]
+[e :U 1560 ]
+"35
+[; ;meas_bcd.c: 35:     do { LATEbits.LATE2 = 0; } while(0);
+[e :U 1564 ]
 {
 [e = . . _LATEbits 0 2 -> -> 0 `i `uc ]
 }
-[e :U 1578 ]
+[e :U 1563 ]
+"37
+[; ;meas_bcd.c: 37:     if(ch&0x01)
+[e $ ! != & -> _ch `i -> 1 `i -> 0 `i 1565  ]
+"38
+[; ;meas_bcd.c: 38:     do { LATEbits.LATE0 = 1; } while(0);
+[e :U 1568 ]
+{
+[e = . . _LATEbits 0 0 -> -> 1 `i `uc ]
+}
+[e :U 1567 ]
+[e :U 1565 ]
+"40
+[; ;meas_bcd.c: 40:     if((ch&0x02)>>1)
+[e $ ! != >> & -> _ch `i -> 2 `i -> 1 `i -> 0 `i 1569  ]
+"41
+[; ;meas_bcd.c: 41:     do { LATEbits.LATE1 = 1; } while(0);
+[e :U 1572 ]
+{
+[e = . . _LATEbits 0 1 -> -> 1 `i `uc ]
+}
+[e :U 1571 ]
+[e :U 1569 ]
+"43
+[; ;meas_bcd.c: 43:     if((ch&0x04)>>2)
+[e $ ! != >> & -> _ch `i -> 4 `i -> 2 `i -> 0 `i 1573  ]
+"44
+[; ;meas_bcd.c: 44:     do { LATEbits.LATE2 = 1; } while(0);
 [e :U 1576 ]
-"48
-[; ;meas_bcd.c: 48: }
+{
+[e = . . _LATEbits 0 2 -> -> 1 `i `uc ]
+}
+[e :U 1575 ]
+[e :U 1573 ]
+"46
+[; ;meas_bcd.c: 46: }
 [e :UE 1555 ]
 }
-"50
-[; ;meas_bcd.c: 50: void convert_bcd_ext_inp_to_bcdval(uint8_t * bcdval)
+"48
+[; ;meas_bcd.c: 48: void convert_bcd_ext_inp_to_bcdval(uint8_t * bcdval)
 [v _convert_bcd_ext_inp_to_bcdval `(v ~T0 @X0 1 ef1`*uc ]
-"51
-[; ;meas_bcd.c: 51: {
+"49
+[; ;meas_bcd.c: 49: {
 {
 [e :U _convert_bcd_ext_inp_to_bcdval ]
-"50
-[; ;meas_bcd.c: 50: void convert_bcd_ext_inp_to_bcdval(uint8_t * bcdval)
+"48
+[; ;meas_bcd.c: 48: void convert_bcd_ext_inp_to_bcdval(uint8_t * bcdval)
 [v _bcdval `*uc ~T0 @X0 1 r1 ]
-"51
-[; ;meas_bcd.c: 51: {
+"49
+[; ;meas_bcd.c: 49: {
 [f ]
-"52
-[; ;meas_bcd.c: 52:     * bcdval = ((BCD_INP[0]) & 0x01)|
+"50
+[; ;meas_bcd.c: 50:     * bcdval = ((BCD_INP[0]) & 0x01)|
 [e = *U _bcdval -> | | | | | | | & -> *U + &U _BCD_INP * -> -> -> 0 `i `ui `ux -> -> # *U &U _BCD_INP `ui `ux `i -> 1 `i & << -> *U + &U _BCD_INP * -> -> -> 1 `i `ui `ux -> -> # *U &U _BCD_INP `ui `ux `i -> 1 `i -> 2 `i & << -> *U + &U _BCD_INP * -> -> -> 2 `i `ui `ux -> -> # *U &U _BCD_INP `ui `ux `i -> 2 `i -> 4 `i & << -> *U + &U _BCD_INP * -> -> -> 3 `i `ui `ux -> -> # *U &U _BCD_INP `ui `ux `i -> 3 `i -> 8 `i & << -> *U + &U _BCD_INP * -> -> -> 4 `i `ui `ux -> -> # *U &U _BCD_INP `ui `ux `i -> 4 `i -> 16 `i & << -> *U + &U _BCD_INP * -> -> -> 5 `i `ui `ux -> -> # *U &U _BCD_INP `ui `ux `i -> 5 `i -> 32 `i & << -> *U + &U _BCD_INP * -> -> -> 6 `i `ui `ux -> -> # *U &U _BCD_INP `ui `ux `i -> 6 `i -> 64 `i & << -> *U + &U _BCD_INP * -> -> -> 7 `i `ui `ux -> -> # *U &U _BCD_INP `ui `ux `i -> 7 `i -> 128 `i `uc ]
-"60
-[; ;meas_bcd.c: 60: }
-[e :UE 1580 ]
+"58
+[; ;meas_bcd.c: 58: }
+[e :UE 1577 ]
 }

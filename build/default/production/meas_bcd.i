@@ -21312,7 +21312,7 @@ void meas_bcd_inp(void)
 
         for(i=0;i<=7;i++){
             channel_switch(i);
-            DELAY_milliseconds(5);
+            DELAY_milliseconds(50);
             adcval = IP1_ADC_GetConversion(0,0);
             if(adcval>800)
                 BCD_INP[i] = 1;
@@ -21325,20 +21325,18 @@ void meas_bcd_inp(void)
 void channel_switch(uint8_t ch)
 {
 
+    do { LATEbits.LATE0 = 0; } while(0);
+    do { LATEbits.LATE1 = 0; } while(0);
+    do { LATEbits.LATE2 = 0; } while(0);
+
     if(ch&0x01)
     do { LATEbits.LATE0 = 1; } while(0);
-    else
-    do { LATEbits.LATE0 = 0; } while(0);
 
     if((ch&0x02)>>1)
     do { LATEbits.LATE1 = 1; } while(0);
-    else
-    do { LATEbits.LATE1 = 0; } while(0);
 
     if((ch&0x04)>>2)
     do { LATEbits.LATE2 = 1; } while(0);
-    else
-    do { LATEbits.LATE2 = 0; } while(0);
 
 }
 

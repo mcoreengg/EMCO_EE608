@@ -180,7 +180,7 @@ negChannel_AVss 0
 [v _meas_bcd_inp meas_bcd_inp `(v  1 e 1 0 ]
 "30
 [v _channel_switch channel_switch `(v  1 e 1 0 ]
-"50
+"48
 [v _convert_bcd_ext_inp_to_bcdval convert_bcd_ext_inp_to_bcdval `(v  1 e 1 0 ]
 "39 D:\Companies\EMCO\EE608\EM608_FirmwareV1.0.X\EMCO_EE608\seg_dsplay.c
 [v _display display `(v  1 e 1 0 ]
@@ -861,7 +861,7 @@ negChannel_AVss 0
 [v channel_switch@ch ch `uc  1 p 1 wreg ]
 "33
 [v channel_switch@ch ch `uc  1 p 1 13 ]
-"48
+"46
 } 0
 "105 D:\Companies\EMCO\EE608\EM608_FirmwareV1.0.X\EMCO_EE608\mcc_generated_files/adc/src/adc.c
 [v _IP1_ADC_GetConversion IP1_ADC_GetConversion `(us  1 e 2 0 ]
@@ -940,11 +940,11 @@ negChannel_AVss 0
 {
 "80
 } 0
-"50 D:\Companies\EMCO\EE608\EM608_FirmwareV1.0.X\EMCO_EE608\meas_bcd.c
+"48 D:\Companies\EMCO\EE608\EM608_FirmwareV1.0.X\EMCO_EE608\meas_bcd.c
 [v _convert_bcd_ext_inp_to_bcdval convert_bcd_ext_inp_to_bcdval `(v  1 e 1 0 ]
 {
 [v convert_bcd_ext_inp_to_bcdval@bcdval bcdval `*.30uc  1 p 1 12 ]
-"60
+"58
 } 0
 "210 D:\Companies\EMCO\EE608\EM608_FirmwareV1.0.X\EMCO_EE608\mcc_generated_files/timer/src/tmr1.c
 [v _TMR1_TMRInterruptEnable TMR1_TMRInterruptEnable `(v  1 e 1 0 ]

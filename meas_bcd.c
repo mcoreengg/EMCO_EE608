@@ -17,7 +17,7 @@ void meas_bcd_inp(void)
     
         for(i=0;i<=7;i++){
             channel_switch(i);
-            DELAY_milliseconds(5);
+            DELAY_milliseconds(50);
             adcval =  IP1_ADC_GetConversion(0,0);
             if(adcval>800)
                 BCD_INP[i] = 1;
@@ -30,20 +30,18 @@ void meas_bcd_inp(void)
 void channel_switch(uint8_t ch)
 {
     // CBA
+    BCD_S1_SetLow(); 
+    BCD_S2_SetLow(); 
+    BCD_S3_SetLow(); 
+    
     if(ch&0x01)
     BCD_S1_SetHigh();   
-    else
-    BCD_S1_SetLow();   
         
     if((ch&0x02)>>1)
     BCD_S2_SetHigh();   
-    else
-    BCD_S2_SetLow();
     
     if((ch&0x04)>>2)
     BCD_S3_SetHigh();   
-    else
-    BCD_S3_SetLow();
     
 }
 
