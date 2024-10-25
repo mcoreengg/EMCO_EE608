@@ -16,4 +16,5 @@ mcc_generated_files/system/../timer/tmr1.h  \
 mcc_generated_files/system/../timer/tmr1_deprecated.h  \
 mcc_generated_files/timer/delay.h  \
 seg_display.h  \
-counter_calc.h 
+counter_calc.h  \
+meas_bcd.h 

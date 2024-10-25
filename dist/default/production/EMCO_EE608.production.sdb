@@ -3,7 +3,7 @@
 [d edition pro ]
 [d chip 18F46K80 ]
 [d frameptr 4065 ]
-"122 D:\Companies\EMCO\EE608\EM608_FirmwareV1.0.X\EMCO_EE608\main.c
+"21 D:\Companies\EMCO\EE608\EM608_FirmwareV1.0.X\EMCO_EE608\meas_bcd.c
 [e E12883 . `uc
 posChannel_CTMU 28
 posChannel_Temp_diode 29
@@ -58,16 +58,12 @@ negChannel_AVss 0
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 "91 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\Umul64.c
 [v ___omul __omul `(uo  1 e 8 0 ]
-"64 D:\Companies\EMCO\EE608\EM608_FirmwareV1.0.X\EMCO_EE608\main.c
+"62 D:\Companies\EMCO\EE608\EM608_FirmwareV1.0.X\EMCO_EE608\main.c
 [v _MyTimer0Callback MyTimer0Callback `(v  1 e 1 0 ]
-"73
+"71
 [v _MyTimer1Callback MyTimer1Callback `(v  1 e 1 0 ]
-"82
+"80
 [v _main main `(i  1 e 2 0 ]
-"139
-[v _channel_switch channel_switch `(v  1 e 1 0 ]
-"158
-[v _convert_bcd_ext_inp_to_bcdval convert_bcd_ext_inp_to_bcdval `(v  1 e 1 0 ]
 "53 D:\Companies\EMCO\EE608\EM608_FirmwareV1.0.X\EMCO_EE608\mcc_generated_files/adc/src/adc.c
 [v _IP1_ADC_Initialize IP1_ADC_Initialize `(v  1 e 1 0 ]
 "105
@@ -178,6 +174,14 @@ negChannel_AVss 0
 [v _EUSART1_RxCompleteCallbackRegister EUSART1_RxCompleteCallbackRegister `(v  1 e 1 0 ]
 "446
 [v _EUSART1_TxCompleteCallbackRegister EUSART1_TxCompleteCallbackRegister `(v  1 e 1 0 ]
+"9 D:\Companies\EMCO\EE608\EM608_FirmwareV1.0.X\EMCO_EE608\meas_bcd.c
+[v _read_adc_val read_adc_val `(v  1 e 1 0 ]
+"13
+[v _meas_bcd_inp meas_bcd_inp `(v  1 e 1 0 ]
+"30
+[v _channel_switch channel_switch `(v  1 e 1 0 ]
+"50
+[v _convert_bcd_ext_inp_to_bcdval convert_bcd_ext_inp_to_bcdval `(v  1 e 1 0 ]
 "39 D:\Companies\EMCO\EE608\EM608_FirmwareV1.0.X\EMCO_EE608\seg_dsplay.c
 [v _display display `(v  1 e 1 0 ]
 "63
@@ -192,7 +196,7 @@ negChannel_AVss 0
 [v _SPBRGH1 SPBRGH1 `VEuc  1 e 1 @3965 ]
 "30492
 [v _LATA LATA `VEuc  1 e 1 @3977 ]
-[s S1673 . 1 `uc 1 LATA0 1 0 :1:0 
+[s S1635 . 1 `uc 1 LATA0 1 0 :1:0 
 `uc 1 LATA1 1 0 :1:1 
 `uc 1 LATA2 1 0 :1:2 
 `uc 1 LATA3 1 0 :1:3 
@@ -202,7 +206,7 @@ negChannel_AVss 0
 `uc 1 LATA7 1 0 :1:7 
 ]
 "30519
-[s S1682 . 1 `uc 1 LA0 1 0 :1:0 
+[s S1644 . 1 `uc 1 LA0 1 0 :1:0 
 `uc 1 LA1 1 0 :1:1 
 `uc 1 LA2 1 0 :1:2 
 `uc 1 LA3 1 0 :1:3 
@@ -211,11 +215,11 @@ negChannel_AVss 0
 `uc 1 LA6 1 0 :1:6 
 `uc 1 LA7 1 0 :1:7 
 ]
-[u S1691 . 1 `S1673 1 . 1 0 `S1682 1 . 1 0 ]
-[v _LATAbits LATAbits `VES1691  1 e 1 @3977 ]
+[u S1653 . 1 `S1635 1 . 1 0 `S1644 1 . 1 0 ]
+[v _LATAbits LATAbits `VES1653  1 e 1 @3977 ]
 "30594
 [v _LATB LATB `VEuc  1 e 1 @3978 ]
-[s S1633 . 1 `uc 1 LATB0 1 0 :1:0 
+[s S1595 . 1 `uc 1 LATB0 1 0 :1:0 
 `uc 1 LATB1 1 0 :1:1 
 `uc 1 LATB2 1 0 :1:2 
 `uc 1 LATB3 1 0 :1:3 
@@ -225,7 +229,7 @@ negChannel_AVss 0
 `uc 1 LATB7 1 0 :1:7 
 ]
 "30621
-[s S1642 . 1 `uc 1 LB0 1 0 :1:0 
+[s S1604 . 1 `uc 1 LB0 1 0 :1:0 
 `uc 1 LB1 1 0 :1:1 
 `uc 1 LB2 1 0 :1:2 
 `uc 1 LB3 1 0 :1:3 
@@ -234,11 +238,11 @@ negChannel_AVss 0
 `uc 1 LB6 1 0 :1:6 
 `uc 1 LB7 1 0 :1:7 
 ]
-[u S1651 . 1 `S1633 1 . 1 0 `S1642 1 . 1 0 ]
-[v _LATBbits LATBbits `VES1651  1 e 1 @3978 ]
+[u S1613 . 1 `S1595 1 . 1 0 `S1604 1 . 1 0 ]
+[v _LATBbits LATBbits `VES1613  1 e 1 @3978 ]
 "30706
 [v _LATC LATC `VEuc  1 e 1 @3979 ]
-[s S1713 . 1 `uc 1 LATC0 1 0 :1:0 
+[s S1675 . 1 `uc 1 LATC0 1 0 :1:0 
 `uc 1 LATC1 1 0 :1:1 
 `uc 1 LATC2 1 0 :1:2 
 `uc 1 LATC3 1 0 :1:3 
@@ -248,7 +252,7 @@ negChannel_AVss 0
 `uc 1 LATC7 1 0 :1:7 
 ]
 "30733
-[s S1722 . 1 `uc 1 LC0 1 0 :1:0 
+[s S1684 . 1 `uc 1 LC0 1 0 :1:0 
 `uc 1 LC1 1 0 :1:1 
 `uc 1 LC2 1 0 :1:2 
 `uc 1 LC3 1 0 :1:3 
@@ -257,23 +261,23 @@ negChannel_AVss 0
 `uc 1 LC6 1 0 :1:6 
 `uc 1 LC7 1 0 :1:7 
 ]
-[u S1731 . 1 `S1713 1 . 1 0 `S1722 1 . 1 0 ]
-[v _LATCbits LATCbits `VES1731  1 e 1 @3979 ]
+[u S1693 . 1 `S1675 1 . 1 0 `S1684 1 . 1 0 ]
+[v _LATCbits LATCbits `VES1693  1 e 1 @3979 ]
 "30818
 [v _LATD LATD `VEuc  1 e 1 @3980 ]
 "30930
 [v _LATE LATE `VEuc  1 e 1 @3981 ]
-[s S1577 . 1 `uc 1 LATE0 1 0 :1:0 
+[s S1768 . 1 `uc 1 LATE0 1 0 :1:0 
 `uc 1 LATE1 1 0 :1:1 
 `uc 1 LATE2 1 0 :1:2 
 ]
 "30947
-[s S1581 . 1 `uc 1 LE0 1 0 :1:0 
+[s S1772 . 1 `uc 1 LE0 1 0 :1:0 
 `uc 1 LE1 1 0 :1:1 
 `uc 1 LE2 1 0 :1:2 
 ]
-[u S1585 . 1 `S1577 1 . 1 0 `S1581 1 . 1 0 ]
-[v _LATEbits LATEbits `VES1585  1 e 1 @3981 ]
+[u S1776 . 1 `S1768 1 . 1 0 `S1772 1 . 1 0 ]
+[v _LATEbits LATEbits `VES1776  1 e 1 @3981 ]
 "31088
 [v _TRISA TRISA `VEuc  1 e 1 @3986 ]
 "31145
@@ -491,13 +495,13 @@ negChannel_AVss 0
 [v _ADCON2 ADCON2 `VEuc  1 e 1 @4032 ]
 "34834
 [v _ADCON1 ADCON1 `VEuc  1 e 1 @4033 ]
-[s S1898 . 1 `uc 1 CHSN 1 0 :3:0 
+[s S1913 . 1 `uc 1 CHSN 1 0 :3:0 
 `uc 1 VNCFG 1 0 :1:3 
 `uc 1 VCFG 1 0 :2:4 
 `uc 1 TRIGSEL 1 0 :2:6 
 ]
 "34863
-[s S1903 . 1 `uc 1 CHSN0 1 0 :1:0 
+[s S1918 . 1 `uc 1 CHSN0 1 0 :1:0 
 `uc 1 CHSN1 1 0 :1:1 
 `uc 1 CHSN2 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -507,28 +511,28 @@ negChannel_AVss 0
 `uc 1 TRIGSEL1 1 0 :1:7 
 ]
 "34863
-[s S1912 . 1 `uc 1 . 1 0 :3:0 
+[s S1927 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 CHSN3 1 0 :1:3 
 `uc 1 VCFG01 1 0 :1:4 
 `uc 1 VCFG11 1 0 :1:5 
 ]
 "34863
-[u S1917 . 1 `S1898 1 . 1 0 `S1903 1 . 1 0 `S1912 1 . 1 0 ]
+[u S1932 . 1 `S1913 1 . 1 0 `S1918 1 . 1 0 `S1927 1 . 1 0 ]
 "34863
 "34863
-[v _ADCON1bits ADCON1bits `VES1917  1 e 1 @4033 ]
+[v _ADCON1bits ADCON1bits `VES1932  1 e 1 @4033 ]
 "34938
 [v _ADCON0 ADCON0 `VEuc  1 e 1 @4034 ]
-[s S1826 . 1 `uc 1 . 1 0 :1:0 
+[s S1841 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO_NOT_DONE 1 0 :1:1 
 ]
 "34983
-[s S1829 . 1 `uc 1 ADON 1 0 :1:0 
+[s S1844 . 1 `uc 1 ADON 1 0 :1:0 
 `uc 1 GO_nDONE 1 0 :1:1 
 `uc 1 CHS 1 0 :5:2 
 ]
 "34983
-[s S1833 . 1 `uc 1 . 1 0 :1:0 
+[s S1848 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 DONE 1 0 :1:1 
 `uc 1 CHS0 1 0 :1:2 
 `uc 1 CHS1 1 0 :1:3 
@@ -537,30 +541,30 @@ negChannel_AVss 0
 `uc 1 CHS4 1 0 :1:6 
 ]
 "34983
-[s S1841 . 1 `uc 1 . 1 0 :1:0 
+[s S1856 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO 1 0 :1:1 
 ]
 "34983
-[s S1844 . 1 `uc 1 . 1 0 :1:0 
+[s S1859 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 NOT_DONE 1 0 :1:1 
 ]
 "34983
-[s S1847 . 1 `uc 1 . 1 0 :1:0 
+[s S1862 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 nDONE 1 0 :1:1 
 ]
 "34983
-[s S1850 . 1 `uc 1 . 1 0 :1:0 
+[s S1865 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GODONE 1 0 :1:1 
 ]
 "34983
-[s S1853 . 1 `uc 1 . 1 0 :1:0 
+[s S1868 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO_DONE 1 0 :1:1 
 ]
 "34983
-[u S1856 . 1 `S1826 1 . 1 0 `S1829 1 . 1 0 `S1833 1 . 1 0 `S1841 1 . 1 0 `S1844 1 . 1 0 `S1847 1 . 1 0 `S1850 1 . 1 0 `S1853 1 . 1 0 ]
+[u S1871 . 1 `S1841 1 . 1 0 `S1844 1 . 1 0 `S1848 1 . 1 0 `S1856 1 . 1 0 `S1859 1 . 1 0 `S1862 1 . 1 0 `S1865 1 . 1 0 `S1868 1 . 1 0 ]
 "34983
 "34983
-[v _ADCON0bits ADCON0bits `VES1856  1 e 1 @4034 ]
+[v _ADCON0bits ADCON0bits `VES1871  1 e 1 @4034 ]
 "35070
 [v _ADRESL ADRESL `VEuc  1 e 1 @4035 ]
 "35090
@@ -764,8 +768,6 @@ negChannel_AVss 0
 [v _timer0_counter timer0_counter `us  1 e 2 0 ]
 "47
 [v _timer1_counter timer1_counter `us  1 e 2 0 ]
-"61
-[v _BCD_INP BCD_INP `[8]uc  1 e 8 0 ]
 "38 D:\Companies\EMCO\EE608\EM608_FirmwareV1.0.X\EMCO_EE608\mcc_generated_files/system/src/interrupt.c
 [v _INT0_InterruptHandler INT0_InterruptHandler `*.37(v  1 e 2 0 ]
 "39
@@ -822,29 +824,69 @@ negChannel_AVss 0
 [v _EUSART1_FramingErrorHandler EUSART1_FramingErrorHandler `*.37(v  1 s 2 EUSART1_FramingErrorHandler ]
 "107
 [v _EUSART1_OverrunErrorHandler EUSART1_OverrunErrorHandler `*.37(v  1 s 2 EUSART1_OverrunErrorHandler ]
+"6 D:\Companies\EMCO\EE608\EM608_FirmwareV1.0.X\EMCO_EE608\meas_bcd.c
+[v _BCD_INP BCD_INP `[8]uc  1 e 8 0 ]
+"7
+[v _adcval adcval `us  1 e 2 0 ]
 "5 D:\Companies\EMCO\EE608\EM608_FirmwareV1.0.X\EMCO_EE608\seg_dsplay.c
 [v _n n `uc  1 e 1 0 ]
 [v _k k `uc  1 e 1 0 ]
 [v _digitval digitval `[9]uc  1 e 9 0 ]
 "23
 [v _segments segments `C[11]uc  1 e 11 0 ]
-"82 D:\Companies\EMCO\EE608\EM608_FirmwareV1.0.X\EMCO_EE608\main.c
+"80 D:\Companies\EMCO\EE608\EM608_FirmwareV1.0.X\EMCO_EE608\main.c
 [v _main main `(i  1 e 2 0 ]
 {
-"84
-[v main@adcval adcval `us  1 a 2 4 ]
-"85
-[v main@i i `uc  1 a 1 6 ]
-"137
+"82
+[v main@adcval adcval `us  1 a 2 5 ]
+"125
+} 0
+"9 D:\Companies\EMCO\EE608\EM608_FirmwareV1.0.X\EMCO_EE608\meas_bcd.c
+[v _read_adc_val read_adc_val `(v  1 e 1 0 ]
+{
+[v read_adc_val@adcres adcres `*.39us  1 p 2 12 ]
+"11
+} 0
+"13
+[v _meas_bcd_inp meas_bcd_inp `(v  1 e 1 0 ]
+{
+"16
+[v meas_bcd_inp@i i `uc  1 a 1 17 ]
+"28
+} 0
+"30
+[v _channel_switch channel_switch `(v  1 e 1 0 ]
+{
+[v channel_switch@ch ch `uc  1 p 1 wreg ]
+[v channel_switch@ch ch `uc  1 p 1 wreg ]
+"33
+[v channel_switch@ch ch `uc  1 p 1 13 ]
+"48
+} 0
+"105 D:\Companies\EMCO\EE608\EM608_FirmwareV1.0.X\EMCO_EE608\mcc_generated_files/adc/src/adc.c
+[v _IP1_ADC_GetConversion IP1_ADC_GetConversion `(us  1 e 2 0 ]
+{
+[v IP1_ADC_GetConversion@posChannel posChannel `E12413  1 p 1 wreg ]
+[v IP1_ADC_GetConversion@posChannel posChannel `E12413  1 p 1 wreg ]
+[v IP1_ADC_GetConversion@negChannel negChannel `E12419  1 p 1 12 ]
+"108
+[v IP1_ADC_GetConversion@posChannel posChannel `E12413  1 p 1 16 ]
+"127
+} 0
+"37 D:\Companies\EMCO\EE608\EM608_FirmwareV1.0.X\EMCO_EE608\mcc_generated_files/timer/src/delay.c
+[v _DELAY_milliseconds DELAY_milliseconds `(v  1 e 1 0 ]
+{
+[v DELAY_milliseconds@milliseconds milliseconds `us  1 p 2 12 ]
+"41
 } 0
 "82 D:\Companies\EMCO\EE608\EM608_FirmwareV1.0.X\EMCO_EE608\seg_dsplay.c
 [v _format_data_to_display format_data_to_display `(v  1 e 1 0 ]
 {
 [v format_data_to_display@bcdval bcdval `uc  1 p 1 wreg ]
 [v format_data_to_display@bcdval bcdval `uc  1 p 1 wreg ]
-[v format_data_to_display@counterval counterval `ul  1 p 4 0 ]
+[v format_data_to_display@counterval counterval `ul  1 p 4 29 ]
 "85
-[v format_data_to_display@bcdval bcdval `uc  1 p 1 34 ]
+[v format_data_to_display@bcdval bcdval `uc  1 p 1 0 ]
 "97
 } 0
 "7 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\llmod.c
@@ -861,9 +903,9 @@ negChannel_AVss 0
 [v ___lldiv __lldiv `(ul  1 e 4 0 ]
 {
 "10
-[v ___lldiv@quotient quotient `ul  1 a 4 29 ]
+[v ___lldiv@quotient quotient `ul  1 a 4 0 ]
 "11
-[v ___lldiv@counter counter `uc  1 a 1 33 ]
+[v ___lldiv@counter counter `uc  1 a 1 4 ]
 "7
 [v ___lldiv@dividend dividend `ul  1 p 4 21 ]
 [v ___lldiv@divisor divisor `ul  1 p 4 25 ]
@@ -898,19 +940,11 @@ negChannel_AVss 0
 {
 "80
 } 0
-"158 D:\Companies\EMCO\EE608\EM608_FirmwareV1.0.X\EMCO_EE608\main.c
+"50 D:\Companies\EMCO\EE608\EM608_FirmwareV1.0.X\EMCO_EE608\meas_bcd.c
 [v _convert_bcd_ext_inp_to_bcdval convert_bcd_ext_inp_to_bcdval `(v  1 e 1 0 ]
 {
-"168
-} 0
-"139
-[v _channel_switch channel_switch `(v  1 e 1 0 ]
-{
-[v channel_switch@ch ch `uc  1 p 1 wreg ]
-[v channel_switch@ch ch `uc  1 p 1 wreg ]
-"142
-[v channel_switch@ch ch `uc  1 p 1 13 ]
-"157
+[v convert_bcd_ext_inp_to_bcdval@bcdval bcdval `*.30uc  1 p 1 12 ]
+"60
 } 0
 "210 D:\Companies\EMCO\EE608\EM608_FirmwareV1.0.X\EMCO_EE608\mcc_generated_files/timer/src/tmr1.c
 [v _TMR1_TMRInterruptEnable TMR1_TMRInterruptEnable `(v  1 e 1 0 ]
@@ -1026,22 +1060,6 @@ negChannel_AVss 0
 {
 "55
 } 0
-"105 D:\Companies\EMCO\EE608\EM608_FirmwareV1.0.X\EMCO_EE608\mcc_generated_files/adc/src/adc.c
-[v _IP1_ADC_GetConversion IP1_ADC_GetConversion `(us  1 e 2 0 ]
-{
-[v IP1_ADC_GetConversion@posChannel posChannel `E12413  1 p 1 wreg ]
-[v IP1_ADC_GetConversion@posChannel posChannel `E12413  1 p 1 wreg ]
-[v IP1_ADC_GetConversion@negChannel negChannel `E12419  1 p 1 12 ]
-"108
-[v IP1_ADC_GetConversion@posChannel posChannel `E12413  1 p 1 16 ]
-"127
-} 0
-"37 D:\Companies\EMCO\EE608\EM608_FirmwareV1.0.X\EMCO_EE608\mcc_generated_files/timer/src/delay.c
-[v _DELAY_milliseconds DELAY_milliseconds `(v  1 e 1 0 ]
-{
-[v DELAY_milliseconds@milliseconds milliseconds `us  1 p 2 12 ]
-"41
-} 0
 "105 D:\Companies\EMCO\EE608\EM608_FirmwareV1.0.X\EMCO_EE608\mcc_generated_files/system/src/interrupt.c
 [v _INTERRUPT_InterruptManagerHigh INTERRUPT_InterruptManagerHigh `IIH(v  1 e 1 0 ]
 {
@@ -1052,10 +1070,10 @@ negChannel_AVss 0
 {
 "232
 } 0
-"73 D:\Companies\EMCO\EE608\EM608_FirmwareV1.0.X\EMCO_EE608\main.c
+"71 D:\Companies\EMCO\EE608\EM608_FirmwareV1.0.X\EMCO_EE608\main.c
 [v _MyTimer1Callback MyTimer1Callback `(v  1 e 1 0 ]
 {
-"78
+"76
 } 0
 "193 D:\Companies\EMCO\EE608\EM608_FirmwareV1.0.X\EMCO_EE608\mcc_generated_files/timer/src/tmr1.c
 [v _TMR1_DefaultOverflowCallback TMR1_DefaultOverflowCallback `(v  1 s 1 TMR1_DefaultOverflowCallback ]
@@ -1073,10 +1091,10 @@ negChannel_AVss 0
 {
 "152
 } 0
-"64 D:\Companies\EMCO\EE608\EM608_FirmwareV1.0.X\EMCO_EE608\main.c
+"62 D:\Companies\EMCO\EE608\EM608_FirmwareV1.0.X\EMCO_EE608\main.c
 [v _MyTimer0Callback MyTimer0Callback `(v  1 e 1 0 ]
 {
-"70
+"68
 } 0
 "159 D:\Companies\EMCO\EE608\EM608_FirmwareV1.0.X\EMCO_EE608\mcc_generated_files/timer/src/tmr0.c
 [v _TMR0_DefaultOverflowCallback TMR0_DefaultOverflowCallback `(v  1 s 1 TMR0_DefaultOverflowCallback ]

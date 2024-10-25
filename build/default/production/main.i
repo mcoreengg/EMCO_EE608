@@ -21301,6 +21301,13 @@ void display(void);
 void counter_calc(void);
 # 38 "main.c" 2
 
+# 1 "./meas_bcd.h" 1
+# 11 "./meas_bcd.h"
+void read_adc_val(uint16_t * adcres);
+void meas_bcd_inp(void);
+void channel_switch(uint8_t ch);
+void convert_bcd_ext_inp_to_bcdval(uint8_t * bcdval);
+# 39 "main.c" 2
 
 
 
@@ -21320,10 +21327,8 @@ extern uint32_t dec_counter;
 
 void MyTimer0Callback(void);
 void MyTimer1Callback(void);
-void channel_switch(uint8_t ch);
-void convert_bcd_ext_inp_to_bcdval();
 
-uint8_t BCD_INP[8]={0};
+
 
 
 void MyTimer0Callback(void){
@@ -21347,8 +21352,6 @@ void MyTimer1Callback(void){
 int main(void)
 {
     uint16_t adcval;
-    uint8_t i;
-
     SYSTEM_Initialize();
 
 
@@ -21381,53 +21384,14 @@ int main(void)
     display_init();
     while(1)
     {
-        for(i=0;i<=7;i++){
-            channel_switch(i);
-            DELAY_milliseconds(5);
-            adcval = IP1_ADC_GetConversion(0,0);
-            if(adcval>800)
-                BCD_INP[i] = 1;
-            else{
-                BCD_INP[i] = 0;
-            }
-        }
-        convert_bcd_ext_inp_to_bcdval();
+        meas_bcd_inp();
+        read_adc_val(&adcval);
+        convert_bcd_ext_inp_to_bcdval(&bcdval);
 
         if(cum_counter>999999)
             cum_counter=0;
         if(bcdval>=64)
             bcdval = 64;
-        format_data_to_display(bcdval, adcval);
+        format_data_to_display(bcdval, (uint32_t)adcval);
     }
-}
-
-void channel_switch(uint8_t ch)
-{
-
-    if(ch&0x01)
-    do { LATEbits.LATE0 = 1; } while(0);
-    else
-    do { LATEbits.LATE0 = 0; } while(0);
-
-    if((ch&0x02)>>1)
-    do { LATEbits.LATE1 = 1; } while(0);
-    else
-    do { LATEbits.LATE1 = 0; } while(0);
-
-    if((ch&0x04)>>2)
-    do { LATEbits.LATE2 = 1; } while(0);
-    else
-    do { LATEbits.LATE2 = 0; } while(0);
-
-}
-void convert_bcd_ext_inp_to_bcdval(void)
-{
-    bcdval = ((BCD_INP[0]) & 0x01)|
-                ((BCD_INP[1]<<1) & 0x02)|
-    ((BCD_INP[2]<<2) & 0x04)|
-          ((BCD_INP[3]<<3) & 0x08)|
-          ((BCD_INP[4]<<4) & 0x10)|
-          ((BCD_INP[5]<<5) & 0x20)|
-          ((BCD_INP[6]<<6) & 0x40)|
-       ((BCD_INP[7]<<7) & 0x80);
 }

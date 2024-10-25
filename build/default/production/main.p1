@@ -48,48 +48,24 @@ Version 4.0 HI-TECH Software Intermediate Code
 "17 ./seg_display.h
 [; ;./seg_display.h: 17: void display_init(void);
 [v _display_init `(v ~T0 @X0 0 ef ]
-"58 main.c
-[; ;main.c: 58: void channel_switch(uint8_t ch);
-[v _channel_switch `(v ~T0 @X0 0 ef1`uc ]
-"44 ./mcc_generated_files/timer/delay.h
-[; ;./mcc_generated_files/timer/delay.h: 44: void DELAY_milliseconds(uint16_t milliseconds);
-[v _DELAY_milliseconds `(v ~T0 @X0 0 ef1`us ]
-"122 main.c
-[; ;main.c: 122:             adcval = IP1_ADC_GetConversion(0,0);
-[c E12883 28 29 30 31 .. ]
-[n E12883 . posChannel_CTMU posChannel_Temp_diode posChannel_Vdd_core posChannel_1_024V_bandgap  ]
-[c E12889 0 .. ]
-[n E12889 . negChannel_AVss  ]
-"145 ./mcc_generated_files/system/../adc/adc.h
-[; ;./mcc_generated_files/system/../adc/adc.h: 145: adc_result_t IP1_ADC_GetConversion(adc_posChannel_t posChannel,adc_negChannel_t negChannel);
-[v _IP1_ADC_GetConversion `(us ~T0 @X0 0 ef2`E12883`E12889 ]
-"59 main.c
-[; ;main.c: 59: void convert_bcd_ext_inp_to_bcdval();
-[v _convert_bcd_ext_inp_to_bcdval `(v ~T0 @X0 0 e? ]
+"12 ./meas_bcd.h
+[; ;./meas_bcd.h: 12: void meas_bcd_inp(void);
+[v _meas_bcd_inp `(v ~T0 @X0 0 ef ]
+"11
+[; ;./meas_bcd.h: 11: void read_adc_val(uint16_t * adcres);
+[v _read_adc_val `(v ~T0 @X0 0 ef1`*us ]
+"14
+[; ;./meas_bcd.h: 14: void convert_bcd_ext_inp_to_bcdval(uint8_t * bcdval);
+[v _convert_bcd_ext_inp_to_bcdval `(v ~T0 @X0 0 ef1`*uc ]
+"50 main.c
+[; ;main.c: 50: extern uint8_t bcdval;
+[v _bcdval `uc ~T0 @X0 0 e ]
 "52
 [; ;main.c: 52: extern uint32_t cum_counter;
 [v _cum_counter `ul ~T0 @X0 0 e ]
-"50
-[; ;main.c: 50: extern uint8_t bcdval;
-[v _bcdval `uc ~T0 @X0 0 e ]
 "18 ./seg_display.h
 [; ;./seg_display.h: 18: void format_data_to_display(uint8_t bcdval, uint32_t counterval);
 [v _format_data_to_display `(v ~T0 @X0 0 ef2`uc`ul ]
-"30936 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k80.h
-[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k80.h: 30936:     struct {
-[s S1173 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S1173 . LATE0 LATE1 LATE2 ]
-"30941
-[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k80.h: 30941:     struct {
-[s S1174 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S1174 . LE0 LE1 LE2 ]
-"30935
-[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k80.h: 30935: typedef union {
-[u S1172 `S1173 1 `S1174 1 ]
-[n S1172 . . . ]
-"30947
-[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k80.h: 30947: extern volatile LATEbits_t LATEbits __attribute__((address(0xF8D)));
-[v _LATEbits `VS1172 ~T0 @X0 0 e@3981 ]
 "54 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k80.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k80.h: 54: __asm("RXERRCNT equ 0E41h");
 [; <" RXERRCNT equ 0E41h ;# ">
@@ -1494,286 +1470,141 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _timer1_counter
 -> -> 0 `i `us
 ]
-"61
-[; ;main.c: 61: uint8_t BCD_INP[8]={0};
-[v _BCD_INP `uc ~T0 @X0 -> 8 `i e ]
-[i _BCD_INP
-:U ..
--> -> 0 `i `uc
-..
-]
-"64
-[; ;main.c: 64: void MyTimer0Callback(void){
+"62
+[; ;main.c: 62: void MyTimer0Callback(void){
 [v _MyTimer0Callback `(v ~T0 @X0 1 ef ]
 {
 [e :U _MyTimer0Callback ]
 [f ]
-"65
-[; ;main.c: 65:     timer0_counter++;
+"63
+[; ;main.c: 63:     timer0_counter++;
 [e ++ _timer0_counter -> -> 1 `i `us ]
-"66
-[; ;main.c: 66:     if(timer0_counter>500){
+"64
+[; ;main.c: 64:     if(timer0_counter>500){
 [e $ ! > -> _timer0_counter `ui -> -> 500 `i `ui 1549  ]
 {
-"67
-[; ;main.c: 67:         timer0_counter=0;
+"65
+[; ;main.c: 65:         timer0_counter=0;
 [e = _timer0_counter -> -> 0 `i `us ]
-"68
-[; ;main.c: 68:     }
+"66
+[; ;main.c: 66:     }
 }
 [e :U 1549 ]
-"69
-[; ;main.c: 69:     display();
+"67
+[; ;main.c: 67:     display();
 [e ( _display ..  ]
-"70
-[; ;main.c: 70: }
+"68
+[; ;main.c: 68: }
 [e :UE 1548 ]
 }
-"73
-[; ;main.c: 73: void MyTimer1Callback(void){
+"71
+[; ;main.c: 71: void MyTimer1Callback(void){
 [v _MyTimer1Callback `(v ~T0 @X0 1 ef ]
 {
 [e :U _MyTimer1Callback ]
 [f ]
-"74
-[; ;main.c: 74:     timer1_counter++;
+"72
+[; ;main.c: 72:     timer1_counter++;
 [e ++ _timer1_counter -> -> 1 `i `us ]
-"75
-[; ;main.c: 75:     if(timer1_counter>50){
+"73
+[; ;main.c: 73:     if(timer1_counter>50){
 [e $ ! > -> _timer1_counter `ui -> -> 50 `i `ui 1551  ]
 {
-"76
-[; ;main.c: 76:         timer1_counter=0;
+"74
+[; ;main.c: 74:         timer1_counter=0;
 [e = _timer1_counter -> -> 0 `i `us ]
-"77
-[; ;main.c: 77:     }
+"75
+[; ;main.c: 75:     }
 }
 [e :U 1551 ]
-"78
-[; ;main.c: 78: }
+"76
+[; ;main.c: 76: }
 [e :UE 1550 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"82
-[; ;main.c: 82: int main(void)
+"80
+[; ;main.c: 80: int main(void)
 [v _main `(i ~T0 @X0 1 ef ]
-"83
-[; ;main.c: 83: {
+"81
+[; ;main.c: 81: {
 {
 [e :U _main ]
 [f ]
-"84
-[; ;main.c: 84:     uint16_t adcval;
+"82
+[; ;main.c: 82:     uint16_t adcval;
 [v _adcval `us ~T0 @X0 1 a ]
-"85
-[; ;main.c: 85:     uint8_t i;
-[v _i `uc ~T0 @X0 1 a ]
-"87
-[; ;main.c: 87:     SYSTEM_Initialize();
+"83
+[; ;main.c: 83:     SYSTEM_Initialize();
 [e ( _SYSTEM_Initialize ..  ]
-"93
-[; ;main.c: 93:     (INTCONbits.GIEH = 1);
+"89
+[; ;main.c: 89:     (INTCONbits.GIEH = 1);
 [e = . . _INTCONbits 2 2 -> -> 1 `i `uc ]
-"99
-[; ;main.c: 99:     (INTCONbits.GIEL = 1);
+"95
+[; ;main.c: 95:     (INTCONbits.GIEL = 1);
 [e = . . _INTCONbits 2 1 -> -> 1 `i `uc ]
-"105
-[; ;main.c: 105:     (INTCONbits.PEIE = 1);
+"101
+[; ;main.c: 101:     (INTCONbits.PEIE = 1);
 [e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
-"109
-[; ;main.c: 109:     TMR0_OverflowCallbackRegister(MyTimer0Callback);
+"105
+[; ;main.c: 105:     TMR0_OverflowCallbackRegister(MyTimer0Callback);
 [e ( _TMR0_OverflowCallbackRegister (1 &U _MyTimer0Callback ]
-"110
-[; ;main.c: 110:     TMR1_OverflowCallbackRegister(MyTimer1Callback);
+"106
+[; ;main.c: 106:     TMR1_OverflowCallbackRegister(MyTimer1Callback);
 [e ( _TMR1_OverflowCallbackRegister (1 &U _MyTimer1Callback ]
-"112
-[; ;main.c: 112:     TMR0_TMRInterruptEnable();
+"108
+[; ;main.c: 108:     TMR0_TMRInterruptEnable();
 [e ( _TMR0_TMRInterruptEnable ..  ]
-"113
-[; ;main.c: 113:     TMR1_TMRInterruptEnable();
+"109
+[; ;main.c: 109:     TMR1_TMRInterruptEnable();
 [e ( _TMR1_TMRInterruptEnable ..  ]
-"114
-[; ;main.c: 114:     TMR0_Start();
+"110
+[; ;main.c: 110:     TMR0_Start();
 [e ( _TMR0_Start ..  ]
-"115
-[; ;main.c: 115:     TMR1_Start();
+"111
+[; ;main.c: 111:     TMR1_Start();
 [e ( _TMR1_Start ..  ]
-"116
-[; ;main.c: 116:     display_init();
+"112
+[; ;main.c: 112:     display_init();
 [e ( _display_init ..  ]
-"117
-[; ;main.c: 117:     while(1)
+"113
+[; ;main.c: 113:     while(1)
 [e :U 1554 ]
-"118
-[; ;main.c: 118:     {
+"114
+[; ;main.c: 114:     {
 {
+"115
+[; ;main.c: 115:         meas_bcd_inp();
+[e ( _meas_bcd_inp ..  ]
+"116
+[; ;main.c: 116:         read_adc_val(&adcval);
+[e ( _read_adc_val (1 &U _adcval ]
+"117
+[; ;main.c: 117:         convert_bcd_ext_inp_to_bcdval(&bcdval);
+[e ( _convert_bcd_ext_inp_to_bcdval (1 &U _bcdval ]
 "119
-[; ;main.c: 119:         for(i=0;i<=7;i++){
-{
-[e = _i -> -> 0 `i `uc ]
-[e $ <= -> _i `i -> 7 `i 1556  ]
-[e $U 1557  ]
-[e :U 1556 ]
-{
+[; ;main.c: 119:         if(cum_counter>999999)
+[e $ ! > _cum_counter -> -> 999999 `l `ul 1556  ]
 "120
-[; ;main.c: 120:             channel_switch(i);
-[e ( _channel_switch (1 _i ]
-"121
-[; ;main.c: 121:             DELAY_milliseconds(5);
-[e ( _DELAY_milliseconds (1 -> -> 5 `i `us ]
-"122
-[; ;main.c: 122:             adcval = IP1_ADC_GetConversion(0,0);
-[e = _adcval ( _IP1_ADC_GetConversion (2 , -> -> 0 `i `E12883 -> -> 0 `i `E12889 ]
-"123
-[; ;main.c: 123:             if(adcval>800)
-[e $ ! > -> _adcval `ui -> -> 800 `i `ui 1559  ]
-"124
-[; ;main.c: 124:                 BCD_INP[i] = 1;
-[e = *U + &U _BCD_INP * -> _i `ux -> -> # *U &U _BCD_INP `ui `ux -> -> 1 `i `uc ]
-[e $U 1560  ]
-"125
-[; ;main.c: 125:             else{
-[e :U 1559 ]
-{
-"126
-[; ;main.c: 126:                 BCD_INP[i] = 0;
-[e = *U + &U _BCD_INP * -> _i `ux -> -> # *U &U _BCD_INP `ui `ux -> -> 0 `i `uc ]
-"127
-[; ;main.c: 127:             }
-}
-[e :U 1560 ]
-"128
-[; ;main.c: 128:         }
-}
-[e ++ _i -> -> 1 `i `uc ]
-[e $ <= -> _i `i -> 7 `i 1556  ]
-[e :U 1557 ]
-}
-"129
-[; ;main.c: 129:         convert_bcd_ext_inp_to_bcdval();
-[e ( _convert_bcd_ext_inp_to_bcdval ..  ]
-"131
-[; ;main.c: 131:         if(cum_counter>999999)
-[e $ ! > _cum_counter -> -> 999999 `l `ul 1561  ]
-"132
-[; ;main.c: 132:             cum_counter=0;
+[; ;main.c: 120:             cum_counter=0;
 [e = _cum_counter -> -> -> 0 `i `l `ul ]
-[e :U 1561 ]
-"133
-[; ;main.c: 133:         if(bcdval>=64)
-[e $ ! >= -> _bcdval `i -> 64 `i 1562  ]
-"134
-[; ;main.c: 134:             bcdval = 64;
+[e :U 1556 ]
+"121
+[; ;main.c: 121:         if(bcdval>=64)
+[e $ ! >= -> _bcdval `i -> 64 `i 1557  ]
+"122
+[; ;main.c: 122:             bcdval = 64;
 [e = _bcdval -> -> 64 `i `uc ]
-[e :U 1562 ]
-"135
-[; ;main.c: 135:         format_data_to_display(bcdval, adcval);
+[e :U 1557 ]
+"123
+[; ;main.c: 123:         format_data_to_display(bcdval, (uint32_t)adcval);
 [e ( _format_data_to_display (2 , _bcdval -> _adcval `ul ]
-"136
-[; ;main.c: 136:     }
+"124
+[; ;main.c: 124:     }
 }
 [e :U 1553 ]
 [e $U 1554  ]
 [e :U 1555 ]
-"137
-[; ;main.c: 137: }
+"125
+[; ;main.c: 125: }
 [e :UE 1552 ]
-}
-"139
-[; ;main.c: 139: void channel_switch(uint8_t ch)
-[v _channel_switch `(v ~T0 @X0 1 ef1`uc ]
-"140
-[; ;main.c: 140: {
-{
-[e :U _channel_switch ]
-"139
-[; ;main.c: 139: void channel_switch(uint8_t ch)
-[v _ch `uc ~T0 @X0 1 r1 ]
-"140
-[; ;main.c: 140: {
-[f ]
-"142
-[; ;main.c: 142:     if(ch&0x01)
-[e $ ! != & -> _ch `i -> 1 `i -> 0 `i 1564  ]
-"143
-[; ;main.c: 143:     do { LATEbits.LATE0 = 1; } while(0);
-[e :U 1567 ]
-{
-[e = . . _LATEbits 0 0 -> -> 1 `i `uc ]
-}
-[e :U 1566 ]
-[e $U 1568  ]
-"144
-[; ;main.c: 144:     else
-[e :U 1564 ]
-"145
-[; ;main.c: 145:     do { LATEbits.LATE0 = 0; } while(0);
-[e :U 1571 ]
-{
-[e = . . _LATEbits 0 0 -> -> 0 `i `uc ]
-}
-[e :U 1570 ]
-[e :U 1568 ]
-"147
-[; ;main.c: 147:     if((ch&0x02)>>1)
-[e $ ! != >> & -> _ch `i -> 2 `i -> 1 `i -> 0 `i 1572  ]
-"148
-[; ;main.c: 148:     do { LATEbits.LATE1 = 1; } while(0);
-[e :U 1575 ]
-{
-[e = . . _LATEbits 0 1 -> -> 1 `i `uc ]
-}
-[e :U 1574 ]
-[e $U 1576  ]
-"149
-[; ;main.c: 149:     else
-[e :U 1572 ]
-"150
-[; ;main.c: 150:     do { LATEbits.LATE1 = 0; } while(0);
-[e :U 1579 ]
-{
-[e = . . _LATEbits 0 1 -> -> 0 `i `uc ]
-}
-[e :U 1578 ]
-[e :U 1576 ]
-"152
-[; ;main.c: 152:     if((ch&0x04)>>2)
-[e $ ! != >> & -> _ch `i -> 4 `i -> 2 `i -> 0 `i 1580  ]
-"153
-[; ;main.c: 153:     do { LATEbits.LATE2 = 1; } while(0);
-[e :U 1583 ]
-{
-[e = . . _LATEbits 0 2 -> -> 1 `i `uc ]
-}
-[e :U 1582 ]
-[e $U 1584  ]
-"154
-[; ;main.c: 154:     else
-[e :U 1580 ]
-"155
-[; ;main.c: 155:     do { LATEbits.LATE2 = 0; } while(0);
-[e :U 1587 ]
-{
-[e = . . _LATEbits 0 2 -> -> 0 `i `uc ]
-}
-[e :U 1586 ]
-[e :U 1584 ]
-"157
-[; ;main.c: 157: }
-[e :UE 1563 ]
-}
-"158
-[; ;main.c: 158: void convert_bcd_ext_inp_to_bcdval(void)
-[v _convert_bcd_ext_inp_to_bcdval `(v ~T0 @X0 1 ef ]
-"159
-[; ;main.c: 159: {
-{
-[e :U _convert_bcd_ext_inp_to_bcdval ]
-[f ]
-"160
-[; ;main.c: 160:     bcdval = ((BCD_INP[0]) & 0x01)|
-[e = _bcdval -> | | | | | | | & -> *U + &U _BCD_INP * -> -> -> 0 `i `ui `ux -> -> # *U &U _BCD_INP `ui `ux `i -> 1 `i & << -> *U + &U _BCD_INP * -> -> -> 1 `i `ui `ux -> -> # *U &U _BCD_INP `ui `ux `i -> 1 `i -> 2 `i & << -> *U + &U _BCD_INP * -> -> -> 2 `i `ui `ux -> -> # *U &U _BCD_INP `ui `ux `i -> 2 `i -> 4 `i & << -> *U + &U _BCD_INP * -> -> -> 3 `i `ui `ux -> -> # *U &U _BCD_INP `ui `ux `i -> 3 `i -> 8 `i & << -> *U + &U _BCD_INP * -> -> -> 4 `i `ui `ux -> -> # *U &U _BCD_INP `ui `ux `i -> 4 `i -> 16 `i & << -> *U + &U _BCD_INP * -> -> -> 5 `i `ui `ux -> -> # *U &U _BCD_INP `ui `ux `i -> 5 `i -> 32 `i & << -> *U + &U _BCD_INP * -> -> -> 6 `i `ui `ux -> -> # *U &U _BCD_INP `ui `ux `i -> 6 `i -> 64 `i & << -> *U + &U _BCD_INP * -> -> -> 7 `i `ui `ux -> -> # *U &U _BCD_INP `ui `ux `i -> 7 `i -> 128 `i `uc ]
-"168
-[; ;main.c: 168: }
-[e :UE 1588 ]
 }
