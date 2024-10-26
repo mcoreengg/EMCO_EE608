@@ -20997,73 +20997,6 @@ int getch(void);
 void putch(char txData);
 # 44 "./mcc_generated_files/system/../uart/../system/system.h" 2
 
-# 1 "./mcc_generated_files/system/../adc/adc.h" 1
-# 45 "./mcc_generated_files/system/../adc/adc.h"
-typedef uint16_t adc_result_t;
-
-
-
-
-
-
-typedef struct
-{
-    adc_result_t adcResult1;
-    adc_result_t adcResult2;
-} adc_sync_double_result_t;
-
-
-
-
-
-
-typedef enum
-{
-    posChannel_CTMU = 0x1c,
-    posChannel_Temp_diode = 0x1d,
-    posChannel_Vdd_core = 0x1e,
-    posChannel_1_024V_bandgap = 0x1f
-} adc_posChannel_t;
-
-
-
-
-
-
-typedef enum
-{
-    negChannel_AVss = 0x0
-} adc_negChannel_t;
-# 91 "./mcc_generated_files/system/../adc/adc.h"
-void IP1_ADC_Initialize(void);
-# 100 "./mcc_generated_files/system/../adc/adc.h"
-void ADC_SetPositiveChannel(adc_posChannel_t channel);
-# 109 "./mcc_generated_files/system/../adc/adc.h"
-void ADC_SetNegativeChannel(adc_negChannel_t channel);
-
-
-
-
-
-
-
-void IP1_ADC_StartConversion(void);
-# 126 "./mcc_generated_files/system/../adc/adc.h"
-_Bool IP1_ADC_IsConversionDone(void);
-
-
-
-
-
-
-
-adc_result_t IP1_ADC_GetConversionResult(void);
-# 145 "./mcc_generated_files/system/../adc/adc.h"
-adc_result_t IP1_ADC_GetConversion(adc_posChannel_t posChannel,adc_negChannel_t negChannel);
-# 154 "./mcc_generated_files/system/../adc/adc.h"
-void IP1_ADC_TemperatureAcquisitionDelay(void);
-# 45 "./mcc_generated_files/system/../uart/../system/system.h" 2
-
 # 1 "./mcc_generated_files/system/../system/interrupt.h" 1
 # 109 "./mcc_generated_files/system/../system/interrupt.h"
 void INTERRUPT_Initialize (void);
@@ -21107,7 +21040,7 @@ void INT3_SetInterruptHandler(void (* InterruptHandler)(void));
 extern void (*INT3_InterruptHandler)(void);
 # 454 "./mcc_generated_files/system/../system/interrupt.h"
 void INT3_DefaultInterruptHandler(void);
-# 46 "./mcc_generated_files/system/../uart/../system/system.h" 2
+# 45 "./mcc_generated_files/system/../uart/../system/system.h" 2
 
 
 # 1 "./mcc_generated_files/system/../timer/tmr0.h" 1
@@ -21178,7 +21111,7 @@ void TMR0_OverflowISR(void);
 
 
  void TMR0_OverflowCallbackRegister(void (* CallbackHandler)(void));
-# 48 "./mcc_generated_files/system/../uart/../system/system.h" 2
+# 47 "./mcc_generated_files/system/../uart/../system/system.h" 2
 
 # 1 "./mcc_generated_files/system/../timer/tmr1.h" 1
 # 41 "./mcc_generated_files/system/../timer/tmr1.h"
@@ -21270,8 +21203,8 @@ void TMR1_OverflowStatusClear(void);
 
 
  void TMR1_GateCallbackRegister(void (* CallbackHandler)(void));
-# 49 "./mcc_generated_files/system/../uart/../system/system.h" 2
-# 58 "./mcc_generated_files/system/../uart/../system/system.h"
+# 48 "./mcc_generated_files/system/../uart/../system/system.h" 2
+# 57 "./mcc_generated_files/system/../uart/../system/system.h"
 void SYSTEM_Initialize(void);
 # 1 "meas_bcd.c" 2
 
@@ -21290,35 +21223,55 @@ void DELAY_microseconds(uint16_t microseconds);
 
 # 1 "./meas_bcd.h" 1
 # 11 "./meas_bcd.h"
-void read_adc_val(uint16_t * adcres);
+void read_bcddata_val(uint16_t * bcdres);
 void meas_bcd_inp(void);
 void channel_switch(uint8_t ch);
 void convert_bcd_ext_inp_to_bcdval(uint8_t * bcdval);
 # 3 "meas_bcd.c" 2
 
+# 1 "./seg_display.h" 1
+# 17 "./seg_display.h"
+void display_init(void);
+void format_data_to_display(uint8_t bcdval, uint32_t counterval);
+void display(void);
+# 4 "meas_bcd.c" 2
+
+
+
 
 
 uint8_t BCD_INP[8]={0};
-uint16_t adcval;
 
-void read_adc_val(uint16_t * adcres){
-   * adcres = adcval;
+
+
+
+uint16_t bcdres;
+
+
+void read_bcddata_val(uint16_t * bcdres){
+
+
+
+    * bcdres = PORTAbits.RA0;
+
 }
+
 
 void meas_bcd_inp(void)
 {
 
     uint8_t i;
+    uint8_t localbcdval;
 
         for(i=0;i<=7;i++){
-            channel_switch(i);
-            DELAY_milliseconds(50);
-            adcval = IP1_ADC_GetConversion(0,0);
-            if(adcval>800)
-                BCD_INP[i] = 1;
-            else{
-                BCD_INP[i] = 0;
-            }
+            channel_switch(1);
+            DELAY_milliseconds(100);
+# 43 "meas_bcd.c"
+            BCD_INP[1] = PORTAbits.RA0;
+
+
+
+
         }
 }
 
@@ -21337,6 +21290,10 @@ void channel_switch(uint8_t ch)
 
     if((ch&0x04)>>2)
     do { LATEbits.LATE2 = 1; } while(0);
+
+
+
+
 
 }
 

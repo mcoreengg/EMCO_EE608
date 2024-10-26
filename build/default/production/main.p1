@@ -3,8 +3,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./seg_display.h: 19: void display(void);
 [v _display `(v ~T0 @X0 0 ef ]
 [p mainexit ]
-"58 ./mcc_generated_files/system/../uart/../system/system.h
-[; ;./mcc_generated_files/system/../uart/../system/system.h: 58: void SYSTEM_Initialize(void);
+"57 ./mcc_generated_files/system/../uart/../system/system.h
+[; ;./mcc_generated_files/system/../uart/../system/system.h: 57: void SYSTEM_Initialize(void);
 [v _SYSTEM_Initialize `(v ~T0 @X0 0 ef ]
 "37210 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k80.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k80.h: 37210:     struct {
@@ -25,14 +25,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 "37236
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k80.h: 37236: extern volatile INTCONbits_t INTCONbits __attribute__((address(0xFF2)));
 [v _INTCONbits `VS1507 ~T0 @X0 0 e@4082 ]
-[v F12957 `(v ~T0 @X0 0 tf ]
+[v F12931 `(v ~T0 @X0 0 tf ]
 "341 ./mcc_generated_files/system/../timer/tmr0.h
 [; ;./mcc_generated_files/system/../timer/tmr0.h: 341:  void TMR0_OverflowCallbackRegister(void (* CallbackHandler)(void));
-[v _TMR0_OverflowCallbackRegister `(v ~T0 @X0 0 ef1`*F12957 ]
-[v F12978 `(v ~T0 @X0 0 tf ]
+[v _TMR0_OverflowCallbackRegister `(v ~T0 @X0 0 ef1`*F12931 ]
+[v F12952 `(v ~T0 @X0 0 tf ]
 "348 ./mcc_generated_files/system/../timer/tmr1.h
 [; ;./mcc_generated_files/system/../timer/tmr1.h: 348: void TMR1_OverflowCallbackRegister(void (* CallbackHandler)(void));
-[v _TMR1_OverflowCallbackRegister `(v ~T0 @X0 0 ef1`*F12978 ]
+[v _TMR1_OverflowCallbackRegister `(v ~T0 @X0 0 ef1`*F12952 ]
 "317 ./mcc_generated_files/system/../timer/tmr0.h
 [; ;./mcc_generated_files/system/../timer/tmr0.h: 317: void TMR0_TMRInterruptEnable(void);
 [v _TMR0_TMRInterruptEnable `(v ~T0 @X0 0 ef ]
@@ -52,8 +52,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./meas_bcd.h: 12: void meas_bcd_inp(void);
 [v _meas_bcd_inp `(v ~T0 @X0 0 ef ]
 "11
-[; ;./meas_bcd.h: 11: void read_adc_val(uint16_t * adcres);
-[v _read_adc_val `(v ~T0 @X0 0 ef1`*us ]
+[; ;./meas_bcd.h: 11: void read_bcddata_val(uint16_t * bcdres);
+[v _read_bcddata_val `(v ~T0 @X0 0 ef1`*us ]
 "14
 [; ;./meas_bcd.h: 14: void convert_bcd_ext_inp_to_bcdval(uint8_t * bcdval);
 [v _convert_bcd_ext_inp_to_bcdval `(v ~T0 @X0 0 ef1`*uc ]
@@ -1481,7 +1481,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ++ _timer0_counter -> -> 1 `i `us ]
 "64
 [; ;main.c: 64:     if(timer0_counter>500){
-[e $ ! > -> _timer0_counter `ui -> -> 500 `i `ui 1549  ]
+[e $ ! > -> _timer0_counter `ui -> -> 500 `i `ui 1548  ]
 {
 "65
 [; ;main.c: 65:         timer0_counter=0;
@@ -1489,13 +1489,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 "66
 [; ;main.c: 66:     }
 }
-[e :U 1549 ]
+[e :U 1548 ]
 "67
 [; ;main.c: 67:     display();
 [e ( _display ..  ]
 "68
 [; ;main.c: 68: }
-[e :UE 1548 ]
+[e :UE 1547 ]
 }
 "71
 [; ;main.c: 71: void MyTimer1Callback(void){
@@ -1508,7 +1508,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ++ _timer1_counter -> -> 1 `i `us ]
 "73
 [; ;main.c: 73:     if(timer1_counter>50){
-[e $ ! > -> _timer1_counter `ui -> -> 50 `i `ui 1551  ]
+[e $ ! > -> _timer1_counter `ui -> -> 50 `i `ui 1550  ]
 {
 "74
 [; ;main.c: 74:         timer1_counter=0;
@@ -1516,10 +1516,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "75
 [; ;main.c: 75:     }
 }
-[e :U 1551 ]
+[e :U 1550 ]
 "76
 [; ;main.c: 76: }
-[e :UE 1550 ]
+[e :UE 1549 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
 "80
@@ -1531,8 +1531,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _main ]
 [f ]
 "82
-[; ;main.c: 82:     uint16_t adcval;
-[v _adcval `us ~T0 @X0 1 a ]
+[; ;main.c: 82:     uint16_t bcdinpsts;
+[v _bcdinpsts `us ~T0 @X0 1 a ]
 "83
 [; ;main.c: 83:     SYSTEM_Initialize();
 [e ( _SYSTEM_Initialize ..  ]
@@ -1568,7 +1568,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _display_init ..  ]
 "113
 [; ;main.c: 113:     while(1)
-[e :U 1554 ]
+[e :U 1553 ]
 "114
 [; ;main.c: 114:     {
 {
@@ -1576,35 +1576,35 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 115:         meas_bcd_inp();
 [e ( _meas_bcd_inp ..  ]
 "116
-[; ;main.c: 116:         read_adc_val(&adcval);
-[e ( _read_adc_val (1 &U _adcval ]
+[; ;main.c: 116:         read_bcddata_val(&bcdinpsts);
+[e ( _read_bcddata_val (1 &U _bcdinpsts ]
 "117
 [; ;main.c: 117:         convert_bcd_ext_inp_to_bcdval(&bcdval);
 [e ( _convert_bcd_ext_inp_to_bcdval (1 &U _bcdval ]
 "119
 [; ;main.c: 119:         if(cum_counter>999999)
-[e $ ! > _cum_counter -> -> 999999 `l `ul 1556  ]
+[e $ ! > _cum_counter -> -> 999999 `l `ul 1555  ]
 "120
 [; ;main.c: 120:             cum_counter=0;
 [e = _cum_counter -> -> -> 0 `i `l `ul ]
-[e :U 1556 ]
+[e :U 1555 ]
 "121
 [; ;main.c: 121:         if(bcdval>=64)
-[e $ ! >= -> _bcdval `i -> 64 `i 1557  ]
+[e $ ! >= -> _bcdval `i -> 64 `i 1556  ]
 "122
 [; ;main.c: 122:             bcdval = 64;
 [e = _bcdval -> -> 64 `i `uc ]
-[e :U 1557 ]
+[e :U 1556 ]
 "123
-[; ;main.c: 123:         format_data_to_display(bcdval, (uint32_t)adcval);
-[e ( _format_data_to_display (2 , _bcdval -> _adcval `ul ]
+[; ;main.c: 123:         format_data_to_display(bcdval, (uint32_t)bcdinpsts);
+[e ( _format_data_to_display (2 , _bcdval -> _bcdinpsts `ul ]
 "124
 [; ;main.c: 124:     }
 }
-[e :U 1553 ]
-[e $U 1554  ]
-[e :U 1555 ]
+[e :U 1552 ]
+[e $U 1553  ]
+[e :U 1554 ]
 "125
 [; ;main.c: 125: }
-[e :UE 1552 ]
+[e :UE 1551 ]
 }

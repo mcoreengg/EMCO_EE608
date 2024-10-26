@@ -50,24 +50,24 @@
 #define PULL_UP_DISABLED     0
 
 // get/set RA0 aliases
-#define IP1_ADC_TRIS                 TRISAbits.TRISA0
-#define IP1_ADC_LAT                  LATAbits.LATA0
-#define IP1_ADC_PORT                 PORTAbits.RA0
-#define IP1_ADC_WPU                  WPUAbits.
-#define IP1_ADC_OD                   ODCONAbits.
-#define IP1_ADC_ANS                  ANSELAbits.ANSEL0
-#define IP1_ADC_SetHigh()            do { LATAbits.LATA0 = 1; } while(0)
-#define IP1_ADC_SetLow()             do { LATAbits.LATA0 = 0; } while(0)
-#define IP1_ADC_Toggle()             do { LATAbits.LATA0 = ~LATAbits.LATA0; } while(0)
-#define IP1_ADC_GetValue()           PORTAbits.RA0
-#define IP1_ADC_SetDigitalInput()    do { TRISAbits.TRISA0 = 1; } while(0)
-#define IP1_ADC_SetDigitalOutput()   do { TRISAbits.TRISA0 = 0; } while(0)
-#define IP1_ADC_SetPullup()          do { WPUAbits. = 1; } while(0)
-#define IP1_ADC_ResetPullup()        do { WPUAbits. = 0; } while(0)
-#define IP1_ADC_SetPushPull()        do { ODCONAbits. = 0; } while(0)
-#define IP1_ADC_SetOpenDrain()       do { ODCONAbits. = 1; } while(0)
-#define IP1_ADC_SetAnalogMode()      do { ANSELAbits.ANSEL0 = 1; } while(0)
-#define IP1_ADC_SetDigitalMode()     do { ANSELAbits.ANSEL0 = 0; } while(0)
+#define IP1_BCD_TRIS                 TRISAbits.TRISA0
+#define IP1_BCD_LAT                  LATAbits.LATA0
+#define IP1_BCD_PORT                 PORTAbits.RA0
+#define IP1_BCD_WPU                  WPUAbits.
+#define IP1_BCD_OD                   ODCONAbits.
+#define IP1_BCD_ANS                  ANSELAbits.ANSEL0
+#define IP1_BCD_SetHigh()            do { LATAbits.LATA0 = 1; } while(0)
+#define IP1_BCD_SetLow()             do { LATAbits.LATA0 = 0; } while(0)
+#define IP1_BCD_Toggle()             do { LATAbits.LATA0 = ~LATAbits.LATA0; } while(0)
+#define IP1_BCD_GetValue()           PORTAbits.RA0
+#define IP1_BCD_SetDigitalInput()    do { TRISAbits.TRISA0 = 1; } while(0)
+#define IP1_BCD_SetDigitalOutput()   do { TRISAbits.TRISA0 = 0; } while(0)
+#define IP1_BCD_SetPullup()          do { WPUAbits. = 1; } while(0)
+#define IP1_BCD_ResetPullup()        do { WPUAbits. = 0; } while(0)
+#define IP1_BCD_SetPushPull()        do { ODCONAbits. = 0; } while(0)
+#define IP1_BCD_SetOpenDrain()       do { ODCONAbits. = 1; } while(0)
+#define IP1_BCD_SetAnalogMode()      do { ANSELAbits.ANSEL0 = 1; } while(0)
+#define IP1_BCD_SetDigitalMode()     do { ANSELAbits.ANSEL0 = 0; } while(0)
 
 // get/set RA1 aliases
 #define RL1_TRIS                 TRISAbits.TRISA1

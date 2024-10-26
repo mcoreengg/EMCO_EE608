@@ -7,9 +7,6 @@
       <logicalFolder name="MCC Generated Files"
                      displayName="MCC Generated Files"
                      projectFiles="true">
-        <logicalFolder name="adc" displayName="adc" projectFiles="true">
-          <itemPath>mcc_generated_files/adc/adc.h</itemPath>
-        </logicalFolder>
         <logicalFolder name="generic_driver_interfaces"
                        displayName="generic_driver_interfaces"
                        projectFiles="true">
@@ -56,11 +53,6 @@
       <logicalFolder name="MCC Generated Files"
                      displayName="MCC Generated Files"
                      projectFiles="true">
-        <logicalFolder name="adc" displayName="adc" projectFiles="true">
-          <logicalFolder name="src" displayName="src" projectFiles="true">
-            <itemPath>mcc_generated_files/adc/src/adc.c</itemPath>
-          </logicalFolder>
-        </logicalFolder>
         <logicalFolder name="system" displayName="system" projectFiles="true">
           <logicalFolder name="src" displayName="src" projectFiles="true">
             <itemPath>mcc_generated_files/system/src/config_bits.c</itemPath>

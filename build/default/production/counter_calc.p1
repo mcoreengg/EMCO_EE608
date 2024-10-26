@@ -1438,7 +1438,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _bcdval_diff -> -> 0 `i `c ]
 "15
 [; ;counter_calc.c: 15:     if(bcdval!= prev_bcdval){
-[e $ ! != -> _bcdval `i -> _prev_bcdval `i 1549  ]
+[e $ ! != -> _bcdval `i -> _prev_bcdval `i 1548  ]
 {
 "16
 [; ;counter_calc.c: 16:         bcdval_diff = (int8_t)(bcdval - prev_bcdval);
@@ -1448,7 +1448,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e =+ _cum_counter -> ( _abs (1 -> _bcdval_diff `i `ul ]
 "19
 [; ;counter_calc.c: 19:         if(bcdval_diff>0){
-[e $ ! > -> _bcdval_diff `i -> 0 `i 1550  ]
+[e $ ! > -> _bcdval_diff `i -> 0 `i 1549  ]
 {
 "20
 [; ;counter_calc.c: 20:             inc_counter +=(uint32_t)abs(bcdval_diff);
@@ -1456,10 +1456,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "21
 [; ;counter_calc.c: 21:         }
 }
-[e :U 1550 ]
+[e :U 1549 ]
 "23
 [; ;counter_calc.c: 23:         if(bcdval_diff<0){
-[e $ ! < -> _bcdval_diff `i -> 0 `i 1551  ]
+[e $ ! < -> _bcdval_diff `i -> 0 `i 1550  ]
 {
 "24
 [; ;counter_calc.c: 24:             dec_counter +=(uint32_t)abs(bcdval_diff);
@@ -1467,15 +1467,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 "25
 [; ;counter_calc.c: 25:         }
 }
-[e :U 1551 ]
+[e :U 1550 ]
 "26
 [; ;counter_calc.c: 26:         prev_bcdval = bcdval;
 [e = _prev_bcdval _bcdval ]
 "27
 [; ;counter_calc.c: 27:     }
 }
-[e :U 1549 ]
+[e :U 1548 ]
 "29
 [; ;counter_calc.c: 29: }
-[e :UE 1548 ]
+[e :UE 1547 ]
 }

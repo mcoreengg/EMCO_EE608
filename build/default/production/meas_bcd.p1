@@ -1,19 +1,25 @@
 Version 4.0 HI-TECH Software Intermediate Code
+"30001 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k80.h
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k80.h: 30001:     struct {
+[s S1138 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1138 . RA0 RA1 RA2 RA3 . RA5 RA6 RA7 ]
+"30011
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k80.h: 30011:     struct {
+[s S1139 :1 `uc 1 :4 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1139 . ULPWUIN . LVDIN . RJPU ]
+"30000
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k80.h: 30000: typedef union {
+[u S1137 `S1138 1 `S1139 1 ]
+[n S1137 . . . ]
+"30019
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k80.h: 30019: extern volatile PORTAbits_t PORTAbits __attribute__((address(0xF80)));
+[v _PORTAbits `VS1137 ~T0 @X0 0 e@3968 ]
 "13 ./meas_bcd.h
 [; ;./meas_bcd.h: 13: void channel_switch(uint8_t ch);
 [v _channel_switch `(v ~T0 @X0 0 ef1`uc ]
 "44 ./mcc_generated_files/timer/delay.h
 [; ;./mcc_generated_files/timer/delay.h: 44: void DELAY_milliseconds(uint16_t milliseconds);
 [v _DELAY_milliseconds `(v ~T0 @X0 0 ef1`us ]
-"21 meas_bcd.c
-[; ;meas_bcd.c: 21:             adcval = IP1_ADC_GetConversion(0,0);
-[c E12883 28 29 30 31 .. ]
-[n E12883 . posChannel_CTMU posChannel_Temp_diode posChannel_Vdd_core posChannel_1_024V_bandgap  ]
-[c E12889 0 .. ]
-[n E12889 . negChannel_AVss  ]
-"145 ./mcc_generated_files/system/../adc/adc.h
-[; ;./mcc_generated_files/system/../adc/adc.h: 145: adc_result_t IP1_ADC_GetConversion(adc_posChannel_t posChannel,adc_negChannel_t negChannel);
-[v _IP1_ADC_GetConversion `(us ~T0 @X0 0 ef2`E12883`E12889 ]
 "30936 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k80.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k80.h: 30936:     struct {
 [s S1173 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -1421,176 +1427,161 @@ Version 4.0 HI-TECH Software Intermediate Code
 "37766
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k80.h: 37766: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"6 meas_bcd.c
-[; ;meas_bcd.c: 6: uint8_t BCD_INP[8]={0};
+"9 meas_bcd.c
+[; ;meas_bcd.c: 9: uint8_t BCD_INP[8]={0};
 [v _BCD_INP `uc ~T0 @X0 -> 8 `i e ]
 [i _BCD_INP
 :U ..
 -> -> 0 `i `uc
 ..
 ]
-"7
-[; ;meas_bcd.c: 7: uint16_t adcval;
-[v _adcval `us ~T0 @X0 1 e ]
-"9
-[; ;meas_bcd.c: 9: void read_adc_val(uint16_t * adcres){
-[v _read_adc_val `(v ~T0 @X0 1 ef1`*us ]
-{
-[e :U _read_adc_val ]
-[v _adcres `*us ~T0 @X0 1 r1 ]
-[f ]
-"10
-[; ;meas_bcd.c: 10:    * adcres = adcval;
-[e = *U _adcres _adcval ]
-"11
-[; ;meas_bcd.c: 11: }
-[e :UE 1548 ]
-}
-"13
-[; ;meas_bcd.c: 13: void meas_bcd_inp(void)
-[v _meas_bcd_inp `(v ~T0 @X0 1 ef ]
 "14
-[; ;meas_bcd.c: 14: {
+[; ;meas_bcd.c: 14: uint16_t bcdres;
+[v _bcdres `us ~T0 @X0 1 e ]
+"17
+[; ;meas_bcd.c: 17: void read_bcddata_val(uint16_t * bcdres){
+[v _read_bcddata_val `(v ~T0 @X0 1 ef1`*us ]
+{
+[e :U _read_bcddata_val ]
+[v _bcdres `*us ~T0 @X0 1 r1 ]
+[f ]
+"21
+[; ;meas_bcd.c: 21:     * bcdres = PORTAbits.RA0;
+[e = *U _bcdres -> . . _PORTAbits 0 0 `us ]
+"23
+[; ;meas_bcd.c: 23: }
+[e :UE 1547 ]
+}
+"26
+[; ;meas_bcd.c: 26: void meas_bcd_inp(void)
+[v _meas_bcd_inp `(v ~T0 @X0 1 ef ]
+"27
+[; ;meas_bcd.c: 27: {
 {
 [e :U _meas_bcd_inp ]
 [f ]
-"16
-[; ;meas_bcd.c: 16:     uint8_t i;
+"29
+[; ;meas_bcd.c: 29:     uint8_t i;
 [v _i `uc ~T0 @X0 1 a ]
-"18
-[; ;meas_bcd.c: 18:         for(i=0;i<=7;i++){
+"30
+[; ;meas_bcd.c: 30:     uint8_t localbcdval;
+[v _localbcdval `uc ~T0 @X0 1 a ]
+"32
+[; ;meas_bcd.c: 32:         for(i=0;i<=7;i++){
 {
 [e = _i -> -> 0 `i `uc ]
-[e $ <= -> _i `i -> 7 `i 1550  ]
-[e $U 1551  ]
-[e :U 1550 ]
+[e $ <= -> _i `i -> 7 `i 1549  ]
+[e $U 1550  ]
+[e :U 1549 ]
 {
-"19
-[; ;meas_bcd.c: 19:             channel_switch(i);
-[e ( _channel_switch (1 _i ]
-"20
-[; ;meas_bcd.c: 20:             DELAY_milliseconds(50);
-[e ( _DELAY_milliseconds (1 -> -> 50 `i `us ]
-"21
-[; ;meas_bcd.c: 21:             adcval = IP1_ADC_GetConversion(0,0);
-[e = _adcval ( _IP1_ADC_GetConversion (2 , -> -> 0 `i `E12883 -> -> 0 `i `E12889 ]
-"22
-[; ;meas_bcd.c: 22:             if(adcval>800)
-[e $ ! > -> _adcval `ui -> -> 800 `i `ui 1553  ]
-"23
-[; ;meas_bcd.c: 23:                 BCD_INP[i] = 1;
-[e = *U + &U _BCD_INP * -> _i `ux -> -> # *U &U _BCD_INP `ui `ux -> -> 1 `i `uc ]
-[e $U 1554  ]
-"24
-[; ;meas_bcd.c: 24:             else{
-[e :U 1553 ]
-{
-"25
-[; ;meas_bcd.c: 25:                 BCD_INP[i] = 0;
-[e = *U + &U _BCD_INP * -> _i `ux -> -> # *U &U _BCD_INP `ui `ux -> -> 0 `i `uc ]
-"26
-[; ;meas_bcd.c: 26:             }
-}
-[e :U 1554 ]
-"27
-[; ;meas_bcd.c: 27:         }
+"33
+[; ;meas_bcd.c: 33:             channel_switch(1);
+[e ( _channel_switch (1 -> -> 1 `i `uc ]
+"34
+[; ;meas_bcd.c: 34:             DELAY_milliseconds(100);
+[e ( _DELAY_milliseconds (1 -> -> 100 `i `us ]
+"43
+[; ;meas_bcd.c: 43:             BCD_INP[1] = PORTAbits.RA0;
+[e = *U + &U _BCD_INP * -> -> -> 1 `i `ui `ux -> -> # *U &U _BCD_INP `ui `ux . . _PORTAbits 0 0 ]
+"48
+[; ;meas_bcd.c: 48:         }
 }
 [e ++ _i -> -> 1 `i `uc ]
-[e $ <= -> _i `i -> 7 `i 1550  ]
-[e :U 1551 ]
+[e $ <= -> _i `i -> 7 `i 1549  ]
+[e :U 1550 ]
 }
-"28
-[; ;meas_bcd.c: 28: }
-[e :UE 1549 ]
+"49
+[; ;meas_bcd.c: 49: }
+[e :UE 1548 ]
 }
-"30
-[; ;meas_bcd.c: 30: void channel_switch(uint8_t ch)
+"51
+[; ;meas_bcd.c: 51: void channel_switch(uint8_t ch)
 [v _channel_switch `(v ~T0 @X0 1 ef1`uc ]
-"31
-[; ;meas_bcd.c: 31: {
+"52
+[; ;meas_bcd.c: 52: {
 {
 [e :U _channel_switch ]
-"30
-[; ;meas_bcd.c: 30: void channel_switch(uint8_t ch)
+"51
+[; ;meas_bcd.c: 51: void channel_switch(uint8_t ch)
 [v _ch `uc ~T0 @X0 1 r1 ]
-"31
-[; ;meas_bcd.c: 31: {
+"52
+[; ;meas_bcd.c: 52: {
 [f ]
-"33
-[; ;meas_bcd.c: 33:     do { LATEbits.LATE0 = 0; } while(0);
-[e :U 1558 ]
+"54
+[; ;meas_bcd.c: 54:     do { LATEbits.LATE0 = 0; } while(0);
+[e :U 1555 ]
 {
 [e = . . _LATEbits 0 0 -> -> 0 `i `uc ]
 }
-[e :U 1557 ]
-"34
-[; ;meas_bcd.c: 34:     do { LATEbits.LATE1 = 0; } while(0);
-[e :U 1561 ]
+[e :U 1554 ]
+"55
+[; ;meas_bcd.c: 55:     do { LATEbits.LATE1 = 0; } while(0);
+[e :U 1558 ]
 {
 [e = . . _LATEbits 0 1 -> -> 0 `i `uc ]
 }
-[e :U 1560 ]
-"35
-[; ;meas_bcd.c: 35:     do { LATEbits.LATE2 = 0; } while(0);
-[e :U 1564 ]
+[e :U 1557 ]
+"56
+[; ;meas_bcd.c: 56:     do { LATEbits.LATE2 = 0; } while(0);
+[e :U 1561 ]
 {
 [e = . . _LATEbits 0 2 -> -> 0 `i `uc ]
 }
-[e :U 1563 ]
-"37
-[; ;meas_bcd.c: 37:     if(ch&0x01)
-[e $ ! != & -> _ch `i -> 1 `i -> 0 `i 1565  ]
-"38
-[; ;meas_bcd.c: 38:     do { LATEbits.LATE0 = 1; } while(0);
-[e :U 1568 ]
+[e :U 1560 ]
+"58
+[; ;meas_bcd.c: 58:     if(ch&0x01)
+[e $ ! != & -> _ch `i -> 1 `i -> 0 `i 1562  ]
+"59
+[; ;meas_bcd.c: 59:     do { LATEbits.LATE0 = 1; } while(0);
+[e :U 1565 ]
 {
 [e = . . _LATEbits 0 0 -> -> 1 `i `uc ]
 }
-[e :U 1567 ]
-[e :U 1565 ]
-"40
-[; ;meas_bcd.c: 40:     if((ch&0x02)>>1)
-[e $ ! != >> & -> _ch `i -> 2 `i -> 1 `i -> 0 `i 1569  ]
-"41
-[; ;meas_bcd.c: 41:     do { LATEbits.LATE1 = 1; } while(0);
-[e :U 1572 ]
+[e :U 1564 ]
+[e :U 1562 ]
+"61
+[; ;meas_bcd.c: 61:     if((ch&0x02)>>1)
+[e $ ! != >> & -> _ch `i -> 2 `i -> 1 `i -> 0 `i 1566  ]
+"62
+[; ;meas_bcd.c: 62:     do { LATEbits.LATE1 = 1; } while(0);
+[e :U 1569 ]
 {
 [e = . . _LATEbits 0 1 -> -> 1 `i `uc ]
 }
-[e :U 1571 ]
-[e :U 1569 ]
-"43
-[; ;meas_bcd.c: 43:     if((ch&0x04)>>2)
-[e $ ! != >> & -> _ch `i -> 4 `i -> 2 `i -> 0 `i 1573  ]
-"44
-[; ;meas_bcd.c: 44:     do { LATEbits.LATE2 = 1; } while(0);
-[e :U 1576 ]
+[e :U 1568 ]
+[e :U 1566 ]
+"64
+[; ;meas_bcd.c: 64:     if((ch&0x04)>>2)
+[e $ ! != >> & -> _ch `i -> 4 `i -> 2 `i -> 0 `i 1570  ]
+"65
+[; ;meas_bcd.c: 65:     do { LATEbits.LATE2 = 1; } while(0);
+[e :U 1573 ]
 {
 [e = . . _LATEbits 0 2 -> -> 1 `i `uc ]
 }
-[e :U 1575 ]
-[e :U 1573 ]
-"46
-[; ;meas_bcd.c: 46: }
-[e :UE 1555 ]
+[e :U 1572 ]
+[e :U 1570 ]
+"71
+[; ;meas_bcd.c: 71: }
+[e :UE 1552 ]
 }
-"48
-[; ;meas_bcd.c: 48: void convert_bcd_ext_inp_to_bcdval(uint8_t * bcdval)
+"73
+[; ;meas_bcd.c: 73: void convert_bcd_ext_inp_to_bcdval(uint8_t * bcdval)
 [v _convert_bcd_ext_inp_to_bcdval `(v ~T0 @X0 1 ef1`*uc ]
-"49
-[; ;meas_bcd.c: 49: {
+"74
+[; ;meas_bcd.c: 74: {
 {
 [e :U _convert_bcd_ext_inp_to_bcdval ]
-"48
-[; ;meas_bcd.c: 48: void convert_bcd_ext_inp_to_bcdval(uint8_t * bcdval)
+"73
+[; ;meas_bcd.c: 73: void convert_bcd_ext_inp_to_bcdval(uint8_t * bcdval)
 [v _bcdval `*uc ~T0 @X0 1 r1 ]
-"49
-[; ;meas_bcd.c: 49: {
+"74
+[; ;meas_bcd.c: 74: {
 [f ]
-"50
-[; ;meas_bcd.c: 50:     * bcdval = ((BCD_INP[0]) & 0x01)|
+"75
+[; ;meas_bcd.c: 75:     * bcdval = ((BCD_INP[0]) & 0x01)|
 [e = *U _bcdval -> | | | | | | | & -> *U + &U _BCD_INP * -> -> -> 0 `i `ui `ux -> -> # *U &U _BCD_INP `ui `ux `i -> 1 `i & << -> *U + &U _BCD_INP * -> -> -> 1 `i `ui `ux -> -> # *U &U _BCD_INP `ui `ux `i -> 1 `i -> 2 `i & << -> *U + &U _BCD_INP * -> -> -> 2 `i `ui `ux -> -> # *U &U _BCD_INP `ui `ux `i -> 2 `i -> 4 `i & << -> *U + &U _BCD_INP * -> -> -> 3 `i `ui `ux -> -> # *U &U _BCD_INP `ui `ux `i -> 3 `i -> 8 `i & << -> *U + &U _BCD_INP * -> -> -> 4 `i `ui `ux -> -> # *U &U _BCD_INP `ui `ux `i -> 4 `i -> 16 `i & << -> *U + &U _BCD_INP * -> -> -> 5 `i `ui `ux -> -> # *U &U _BCD_INP `ui `ux `i -> 5 `i -> 32 `i & << -> *U + &U _BCD_INP * -> -> -> 6 `i `ui `ux -> -> # *U &U _BCD_INP `ui `ux `i -> 6 `i -> 64 `i & << -> *U + &U _BCD_INP * -> -> -> 7 `i `ui `ux -> -> # *U &U _BCD_INP `ui `ux `i -> 7 `i -> 128 `i `uc ]
-"58
-[; ;meas_bcd.c: 58: }
-[e :UE 1577 ]
+"83
+[; ;meas_bcd.c: 83: }
+[e :UE 1574 ]
 }

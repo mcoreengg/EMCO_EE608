@@ -8,7 +8,6 @@ mcc_generated_files/system/src/../../uart/eusart1.h  \
 mcc_generated_files/system/src/../../uart/../system/system.h  \
 mcc_generated_files/system/src/../../uart/uart_drv_interface.h  \
 mcc_generated_files/system/src/../../uart/uart_types.h  \
-mcc_generated_files/system/src/../../adc/adc.h  \
 mcc_generated_files/system/src/../../system/interrupt.h  \
 mcc_generated_files/system/src/../../timer/tmr0.h  \
 mcc_generated_files/system/src/../../timer/tmr0_deprecated.h  \

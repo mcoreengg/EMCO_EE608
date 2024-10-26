@@ -79,7 +79,7 @@ void MyTimer1Callback(void){
 
 int main(void)
 {
-    uint16_t adcval;
+    uint16_t bcdinpsts;
     SYSTEM_Initialize();
     // If using interrupts in PIC18 High/Low Priority Mode you need to enable the Global High and Low Interrupts 
     // If using interrupts in PIC Mid-Range Compatibility Mode you need to enable the Global and Peripheral Interrupts 
@@ -113,14 +113,14 @@ int main(void)
     while(1)
     {
         meas_bcd_inp();
-        read_adc_val(&adcval);
+        read_bcddata_val(&bcdinpsts);        
         convert_bcd_ext_inp_to_bcdval(&bcdval);
                 // To avoid overflow of process variables.
         if(cum_counter>999999)
             cum_counter=0;
         if(bcdval>=64)
             bcdval = 64;
-        format_data_to_display(bcdval, (uint32_t)adcval);
+        format_data_to_display(bcdval, (uint32_t)bcdinpsts);
     }    
 }
 
