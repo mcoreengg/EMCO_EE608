@@ -30,8 +30,8 @@ void meas_bcd_inp(void)
     uint8_t localbcdval;
     
         for(i=0;i<=7;i++){
-            channel_switch(1);
-            DELAY_milliseconds(100);
+            channel_switch(i);
+            DELAY_milliseconds(20);
             #if ANALOG_MODE_BCD
             adcval =  IP1_ADC_GetConversion(0,0);
             if(adcval>800)
@@ -40,7 +40,7 @@ void meas_bcd_inp(void)
                 BCD_INP[i] = 0;
             }
             #else
-            BCD_INP[1] = IP1_BCD_GetValue();
+            BCD_INP[i] = IP1_BCD_GetValue();
             #endif
            //convert_bcd_ext_inp_to_bcdval(&localbcdval);
             //format_data_to_display(localbcdval, i);

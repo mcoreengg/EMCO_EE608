@@ -20566,9 +20566,19 @@ void PIN_MANAGER_Initialize(void)
     TRISC = 0x80;
     TRISD = 0x0;
     TRISE = 0x0;
-# 68 "mcc_generated_files/system/src/pins.c"
+
+
+
+
+    ANCON0 = 0x00;
+    ANCON1 = 0x00;
+
+
+
+
     WPUB = 0x1F;
-# 89 "mcc_generated_files/system/src/pins.c"
+    INTCON2bits.nRBPU = 1;
+# 91 "mcc_generated_files/system/src/pins.c"
     IOCB = 0x0;
 
 

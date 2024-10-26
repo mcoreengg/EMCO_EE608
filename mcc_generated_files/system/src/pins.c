@@ -61,12 +61,14 @@ void PIN_MANAGER_Initialize(void)
     /**
     ANSELx registers
     */
+    ANCON0 = 0x00;
+    ANCON1 = 0x00;
 
     /**
     WPUx registers
     */
     WPUB = 0x1F;
-
+    INTCON2bits.nRBPU = 1;
 
     /**
     SLRCONx registers

@@ -1475,14 +1475,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 1549 ]
 {
 "33
-[; ;meas_bcd.c: 33:             channel_switch(1);
-[e ( _channel_switch (1 -> -> 1 `i `uc ]
+[; ;meas_bcd.c: 33:             channel_switch(i);
+[e ( _channel_switch (1 _i ]
 "34
-[; ;meas_bcd.c: 34:             DELAY_milliseconds(100);
-[e ( _DELAY_milliseconds (1 -> -> 100 `i `us ]
+[; ;meas_bcd.c: 34:             DELAY_milliseconds(20);
+[e ( _DELAY_milliseconds (1 -> -> 20 `i `us ]
 "43
-[; ;meas_bcd.c: 43:             BCD_INP[1] = PORTAbits.RA0;
-[e = *U + &U _BCD_INP * -> -> -> 1 `i `ui `ux -> -> # *U &U _BCD_INP `ui `ux . . _PORTAbits 0 0 ]
+[; ;meas_bcd.c: 43:             BCD_INP[i] = PORTAbits.RA0;
+[e = *U + &U _BCD_INP * -> _i `ux -> -> # *U &U _BCD_INP `ui `ux . . _PORTAbits 0 0 ]
 "48
 [; ;meas_bcd.c: 48:         }
 }

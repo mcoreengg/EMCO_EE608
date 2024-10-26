@@ -21264,10 +21264,10 @@ void meas_bcd_inp(void)
     uint8_t localbcdval;
 
         for(i=0;i<=7;i++){
-            channel_switch(1);
-            DELAY_milliseconds(100);
+            channel_switch(i);
+            DELAY_milliseconds(20);
 # 43 "meas_bcd.c"
-            BCD_INP[1] = PORTAbits.RA0;
+            BCD_INP[i] = PORTAbits.RA0;
 
 
 

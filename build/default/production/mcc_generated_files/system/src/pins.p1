@@ -29,9 +29,34 @@ Version 4.0 HI-TECH Software Intermediate Code
 "31331
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k80.h: 31331: extern volatile unsigned char TRISE __attribute__((address(0xF96)));
 [v _TRISE `Vuc ~T0 @X0 0 e@3990 ]
+"27074
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k80.h: 27074: extern volatile unsigned char ANCON0 __attribute__((address(0xF5D)));
+[v _ANCON0 `Vuc ~T0 @X0 0 e@3933 ]
+"26974
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k80.h: 26974: extern volatile unsigned char ANCON1 __attribute__((address(0xF5C)));
+[v _ANCON1 `Vuc ~T0 @X0 0 e@3932 ]
 "26912
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k80.h: 26912: extern volatile unsigned char WPUB __attribute__((address(0xF5B)));
 [v _WPUB `Vuc ~T0 @X0 0 e@3931 ]
+"37112
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k80.h: 37112:     struct {
+[s S1504 :7 `uc 1 :1 `uc 1 ]
+[n S1504 . . NOT_RBPU ]
+"37116
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k80.h: 37116:     struct {
+[s S1505 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1505 . RBIP INT3IP TMR0IP INTEDG3 INTEDG2 INTEDG1 INTEDG0 nRBPU ]
+"37126
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k80.h: 37126:     struct {
+[s S1506 :1 `uc 1 :1 `uc 1 :1 `uc 1 :4 `uc 1 :1 `uc 1 ]
+[n S1506 . . INT3P T0IP . RBPU ]
+"37111
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k80.h: 37111: typedef union {
+[u S1503 `S1504 1 `S1505 1 `S1506 1 ]
+[n S1503 . . . . ]
+"37134
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k80.h: 37134: extern volatile INTCON2bits_t INTCON2bits __attribute__((address(0xFF1)));
+[v _INTCON2bits `VS1503 ~T0 @X0 0 e@4081 ]
 "26873
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k80.h: 26873: extern volatile unsigned char IOCB __attribute__((address(0xF5A)));
 [v _IOCB `Vuc ~T0 @X0 0 e@3930 ]
@@ -1484,28 +1509,37 @@ Version 4.0 HI-TECH Software Intermediate Code
 "59
 [; ;mcc_generated_files/system/src/pins.c: 59:     TRISE = 0x0;
 [e = _TRISE -> -> 0 `i `uc ]
-"68
-[; ;mcc_generated_files/system/src/pins.c: 68:     WPUB = 0x1F;
+"64
+[; ;mcc_generated_files/system/src/pins.c: 64:     ANCON0 = 0x00;
+[e = _ANCON0 -> -> 0 `i `uc ]
+"65
+[; ;mcc_generated_files/system/src/pins.c: 65:     ANCON1 = 0x00;
+[e = _ANCON1 -> -> 0 `i `uc ]
+"70
+[; ;mcc_generated_files/system/src/pins.c: 70:     WPUB = 0x1F;
 [e = _WPUB -> -> 31 `i `uc ]
-"89
-[; ;mcc_generated_files/system/src/pins.c: 89:     IOCB = 0x0;
+"71
+[; ;mcc_generated_files/system/src/pins.c: 71:     INTCON2bits.nRBPU = 1;
+[e = . . _INTCON2bits 1 7 -> -> 1 `i `uc ]
+"91
+[; ;mcc_generated_files/system/src/pins.c: 91:     IOCB = 0x0;
 [e = _IOCB -> -> 0 `i `uc ]
-"93
-[; ;mcc_generated_files/system/src/pins.c: 93:     INTCONbits.RBIE = 1;
+"95
+[; ;mcc_generated_files/system/src/pins.c: 95:     INTCONbits.RBIE = 1;
 [e = . . _INTCONbits 0 3 -> -> 1 `i `uc ]
-"94
-[; ;mcc_generated_files/system/src/pins.c: 94: }
+"96
+[; ;mcc_generated_files/system/src/pins.c: 96: }
 [e :UE 1542 ]
 }
-"96
-[; ;mcc_generated_files/system/src/pins.c: 96: void PIN_MANAGER_IOC(void)
+"98
+[; ;mcc_generated_files/system/src/pins.c: 98: void PIN_MANAGER_IOC(void)
 [v _PIN_MANAGER_IOC `(v ~T0 @X0 1 ef ]
-"97
-[; ;mcc_generated_files/system/src/pins.c: 97: {
+"99
+[; ;mcc_generated_files/system/src/pins.c: 99: {
 {
 [e :U _PIN_MANAGER_IOC ]
 [f ]
-"98
-[; ;mcc_generated_files/system/src/pins.c: 98: }
+"100
+[; ;mcc_generated_files/system/src/pins.c: 100: }
 [e :UE 1543 ]
 }
