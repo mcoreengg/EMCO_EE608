@@ -1,4 +1,10 @@
 Version 4.0 HI-TECH Software Intermediate Code
+"12 ./meas_bcd.h
+[; ;./meas_bcd.h: 12: void meas_bcd_inp(void);
+[v _meas_bcd_inp `(v ~T0 @X0 0 ef ]
+"56 main.c
+[; ;main.c: 56: extern uint8_t bcd_sel_sw_counter;
+[v _bcd_sel_sw_counter `uc ~T0 @X0 0 e ]
 "19 ./seg_display.h
 [; ;./seg_display.h: 19: void display(void);
 [v _display `(v ~T0 @X0 0 ef ]
@@ -48,10 +54,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "17 ./seg_display.h
 [; ;./seg_display.h: 17: void display_init(void);
 [v _display_init `(v ~T0 @X0 0 ef ]
-"12 ./meas_bcd.h
-[; ;./meas_bcd.h: 12: void meas_bcd_inp(void);
-[v _meas_bcd_inp `(v ~T0 @X0 0 ef ]
-"11
+"11 ./meas_bcd.h
 [; ;./meas_bcd.h: 11: void read_bcddata_val(uint16_t * bcdres);
 [v _read_bcddata_val `(v ~T0 @X0 0 ef1`*us ]
 "14
@@ -1470,141 +1473,154 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _timer1_counter
 -> -> 0 `i `us
 ]
-"62
-[; ;main.c: 62: void MyTimer0Callback(void){
+"65
+[; ;main.c: 65: void MyTimer0Callback(void){
 [v _MyTimer0Callback `(v ~T0 @X0 1 ef ]
 {
 [e :U _MyTimer0Callback ]
 [f ]
-"63
-[; ;main.c: 63:     timer0_counter++;
-[e ++ _timer0_counter -> -> 1 `i `us ]
-"64
-[; ;main.c: 64:     if(timer0_counter>500){
-[e $ ! > -> _timer0_counter `ui -> -> 500 `i `ui 1548  ]
-{
-"65
-[; ;main.c: 65:         timer0_counter=0;
-[e = _timer0_counter -> -> 0 `i `us ]
 "66
-[; ;main.c: 66:     }
+[; ;main.c: 66:     timer0_counter++;
+[e ++ _timer0_counter -> -> 1 `i `us ]
+"67
+[; ;main.c: 67:     if(timer0_counter>50){
+[e $ ! > -> _timer0_counter `ui -> -> 50 `i `ui 1548  ]
+{
+"68
+[; ;main.c: 68:         meas_bcd_inp();
+[e ( _meas_bcd_inp ..  ]
+"69
+[; ;main.c: 69:         bcd_sel_sw_counter++;
+[e ++ _bcd_sel_sw_counter -> -> 1 `i `uc ]
+"70
+[; ;main.c: 70:         timer0_counter=0;
+[e = _timer0_counter -> -> 0 `i `us ]
+"71
+[; ;main.c: 71:     }
 }
 [e :U 1548 ]
-"67
-[; ;main.c: 67:     display();
+"72
+[; ;main.c: 72:     display();
 [e ( _display ..  ]
-"68
-[; ;main.c: 68: }
+"74
+[; ;main.c: 74:     if(bcd_sel_sw_counter>7)
+[e $ ! > -> _bcd_sel_sw_counter `i -> 7 `i 1549  ]
+"75
+[; ;main.c: 75:         bcd_sel_sw_counter=0;
+[e = _bcd_sel_sw_counter -> -> 0 `i `uc ]
+[e :U 1549 ]
+"76
+[; ;main.c: 76: }
 [e :UE 1547 ]
 }
-"71
-[; ;main.c: 71: void MyTimer1Callback(void){
+"79
+[; ;main.c: 79: void MyTimer1Callback(void){
 [v _MyTimer1Callback `(v ~T0 @X0 1 ef ]
 {
 [e :U _MyTimer1Callback ]
 [f ]
-"72
-[; ;main.c: 72:     timer1_counter++;
+"80
+[; ;main.c: 80:     timer1_counter++;
 [e ++ _timer1_counter -> -> 1 `i `us ]
-"73
-[; ;main.c: 73:     if(timer1_counter>50){
-[e $ ! > -> _timer1_counter `ui -> -> 50 `i `ui 1550  ]
+"81
+[; ;main.c: 81:     if(timer1_counter>50){
+[e $ ! > -> _timer1_counter `ui -> -> 50 `i `ui 1551  ]
 {
-"74
-[; ;main.c: 74:         timer1_counter=0;
+"82
+[; ;main.c: 82:         timer1_counter=0;
 [e = _timer1_counter -> -> 0 `i `us ]
-"75
-[; ;main.c: 75:     }
+"83
+[; ;main.c: 83:     }
 }
-[e :U 1550 ]
-"76
-[; ;main.c: 76: }
-[e :UE 1549 ]
+[e :U 1551 ]
+"84
+[; ;main.c: 84: }
+[e :UE 1550 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"80
-[; ;main.c: 80: int main(void)
+"88
+[; ;main.c: 88: int main(void)
 [v _main `(i ~T0 @X0 1 ef ]
-"81
-[; ;main.c: 81: {
+"89
+[; ;main.c: 89: {
 {
 [e :U _main ]
 [f ]
-"82
-[; ;main.c: 82:     uint16_t bcdinpsts;
+"90
+[; ;main.c: 90:     uint16_t bcdinpsts;
 [v _bcdinpsts `us ~T0 @X0 1 a ]
-"83
-[; ;main.c: 83:     SYSTEM_Initialize();
+"91
+[; ;main.c: 91:     SYSTEM_Initialize();
 [e ( _SYSTEM_Initialize ..  ]
-"89
-[; ;main.c: 89:     (INTCONbits.GIEH = 1);
+"97
+[; ;main.c: 97:     (INTCONbits.GIEH = 1);
 [e = . . _INTCONbits 2 2 -> -> 1 `i `uc ]
-"95
-[; ;main.c: 95:     (INTCONbits.GIEL = 1);
+"103
+[; ;main.c: 103:     (INTCONbits.GIEL = 1);
 [e = . . _INTCONbits 2 1 -> -> 1 `i `uc ]
-"101
-[; ;main.c: 101:     (INTCONbits.PEIE = 1);
-[e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
-"105
-[; ;main.c: 105:     TMR0_OverflowCallbackRegister(MyTimer0Callback);
-[e ( _TMR0_OverflowCallbackRegister (1 &U _MyTimer0Callback ]
-"106
-[; ;main.c: 106:     TMR1_OverflowCallbackRegister(MyTimer1Callback);
-[e ( _TMR1_OverflowCallbackRegister (1 &U _MyTimer1Callback ]
-"108
-[; ;main.c: 108:     TMR0_TMRInterruptEnable();
-[e ( _TMR0_TMRInterruptEnable ..  ]
 "109
-[; ;main.c: 109:     TMR1_TMRInterruptEnable();
-[e ( _TMR1_TMRInterruptEnable ..  ]
-"110
-[; ;main.c: 110:     TMR0_Start();
-[e ( _TMR0_Start ..  ]
-"111
-[; ;main.c: 111:     TMR1_Start();
-[e ( _TMR1_Start ..  ]
-"112
-[; ;main.c: 112:     display_init();
-[e ( _display_init ..  ]
+[; ;main.c: 109:     (INTCONbits.PEIE = 1);
+[e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
 "113
-[; ;main.c: 113:     while(1)
-[e :U 1553 ]
+[; ;main.c: 113:     TMR0_OverflowCallbackRegister(MyTimer0Callback);
+[e ( _TMR0_OverflowCallbackRegister (1 &U _MyTimer0Callback ]
 "114
-[; ;main.c: 114:     {
-{
-"115
-[; ;main.c: 115:         meas_bcd_inp();
-[e ( _meas_bcd_inp ..  ]
+[; ;main.c: 114:     TMR1_OverflowCallbackRegister(MyTimer1Callback);
+[e ( _TMR1_OverflowCallbackRegister (1 &U _MyTimer1Callback ]
 "116
-[; ;main.c: 116:         read_bcddata_val(&bcdinpsts);
-[e ( _read_bcddata_val (1 &U _bcdinpsts ]
+[; ;main.c: 116:     TMR0_TMRInterruptEnable();
+[e ( _TMR0_TMRInterruptEnable ..  ]
 "117
-[; ;main.c: 117:         convert_bcd_ext_inp_to_bcdval(&bcdval);
-[e ( _convert_bcd_ext_inp_to_bcdval (1 &U _bcdval ]
+[; ;main.c: 117:     TMR1_TMRInterruptEnable();
+[e ( _TMR1_TMRInterruptEnable ..  ]
+"118
+[; ;main.c: 118:     TMR0_Start();
+[e ( _TMR0_Start ..  ]
 "119
-[; ;main.c: 119:         if(cum_counter>999999)
-[e $ ! > _cum_counter -> -> 999999 `l `ul 1555  ]
+[; ;main.c: 119:     TMR1_Start();
+[e ( _TMR1_Start ..  ]
 "120
-[; ;main.c: 120:             cum_counter=0;
-[e = _cum_counter -> -> -> 0 `i `l `ul ]
-[e :U 1555 ]
+[; ;main.c: 120:     display_init();
+[e ( _display_init ..  ]
 "121
-[; ;main.c: 121:         if(bcdval>=64)
-[e $ ! >= -> _bcdval `i -> 64 `i 1556  ]
-"122
-[; ;main.c: 122:             bcdval = 64;
-[e = _bcdval -> -> 64 `i `uc ]
-[e :U 1556 ]
-"123
-[; ;main.c: 123:         format_data_to_display(bcdval, (uint32_t)bcdinpsts);
-[e ( _format_data_to_display (2 , _bcdval -> _bcdinpsts `ul ]
-"124
-[; ;main.c: 124:     }
-}
-[e :U 1552 ]
-[e $U 1553  ]
+[; ;main.c: 121:     while(1)
 [e :U 1554 ]
+"122
+[; ;main.c: 122:     {
+{
+"123
+[; ;main.c: 123:         meas_bcd_inp();
+[e ( _meas_bcd_inp ..  ]
+"124
+[; ;main.c: 124:         read_bcddata_val(&bcdinpsts);
+[e ( _read_bcddata_val (1 &U _bcdinpsts ]
 "125
-[; ;main.c: 125: }
-[e :UE 1551 ]
+[; ;main.c: 125:         convert_bcd_ext_inp_to_bcdval(&bcdval);
+[e ( _convert_bcd_ext_inp_to_bcdval (1 &U _bcdval ]
+"127
+[; ;main.c: 127:         if(cum_counter>999999)
+[e $ ! > _cum_counter -> -> 999999 `l `ul 1556  ]
+"128
+[; ;main.c: 128:             cum_counter=0;
+[e = _cum_counter -> -> -> 0 `i `l `ul ]
+[e :U 1556 ]
+"129
+[; ;main.c: 129:         if(bcdval>=64)
+[e $ ! >= -> _bcdval `i -> 64 `i 1557  ]
+"130
+[; ;main.c: 130:             bcdval = 64;
+[e = _bcdval -> -> 64 `i `uc ]
+[e :U 1557 ]
+"131
+[; ;main.c: 131:         format_data_to_display(bcdval, (uint32_t)bcdinpsts);
+[e ( _format_data_to_display (2 , _bcdval -> _bcdinpsts `ul ]
+"132
+[; ;main.c: 132:     }
+}
+[e :U 1553 ]
+[e $U 1554  ]
+[e :U 1555 ]
+"133
+[; ;main.c: 133: }
+[e :UE 1552 ]
 }

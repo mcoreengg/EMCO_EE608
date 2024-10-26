@@ -21258,6 +21258,9 @@ extern uint32_t cum_counter;
 extern uint32_t inc_counter;
 extern uint32_t dec_counter;
 
+extern uint8_t bcd_sel_sw_counter;
+
+
 void MyTimer0Callback(void);
 void MyTimer1Callback(void);
 
@@ -21266,10 +21269,15 @@ void MyTimer1Callback(void);
 
 void MyTimer0Callback(void){
     timer0_counter++;
-    if(timer0_counter>500){
+    if(timer0_counter>50){
+        meas_bcd_inp();
+        bcd_sel_sw_counter++;
         timer0_counter=0;
     }
     display();
+
+    if(bcd_sel_sw_counter>7)
+        bcd_sel_sw_counter=0;
 }
 
 

@@ -21248,6 +21248,8 @@ uint8_t BCD_INP[8]={0};
 uint16_t bcdres;
 
 
+uint8_t bcd_sel_sw_counter;
+
 void read_bcddata_val(uint16_t * bcdres){
 
 
@@ -21260,19 +21262,14 @@ void read_bcddata_val(uint16_t * bcdres){
 void meas_bcd_inp(void)
 {
 
-    uint8_t i;
-    uint8_t localbcdval;
-
-        for(i=0;i<=7;i++){
-            channel_switch(i);
-            DELAY_milliseconds(20);
-# 43 "meas_bcd.c"
-            BCD_INP[i] = PORTAbits.RA0;
+    channel_switch(bcd_sel_sw_counter);
+# 40 "meas_bcd.c"
+    BCD_INP[bcd_sel_sw_counter] = PORTAbits.RA0;
+    BCD_INP[6] =0;
+    BCD_INP[7] =0;
 
 
 
-
-        }
 }
 
 void channel_switch(uint8_t ch)

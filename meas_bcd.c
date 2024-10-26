@@ -14,6 +14,8 @@ uint16_t adcval;
 uint16_t bcdres;
 #endif
 
+uint8_t bcd_sel_sw_counter;
+
 void read_bcddata_val(uint16_t * bcdres){
     #if ANALOG_MODE_BCD
     * bcdres = adcval;
@@ -26,26 +28,21 @@ void read_bcddata_val(uint16_t * bcdres){
 void meas_bcd_inp(void)
 {
    
-    uint8_t i;
-    uint8_t localbcdval;
-    
-        for(i=0;i<=7;i++){
-            channel_switch(i);
-            DELAY_milliseconds(20);
-            #if ANALOG_MODE_BCD
-            adcval =  IP1_ADC_GetConversion(0,0);
+    channel_switch(bcd_sel_sw_counter);
+        #if ANALOG_MODE_BCD
+        adcval =  IP1_ADC_GetConversion(0,0);
             if(adcval>800)
                 BCD_INP[i] = 1;
             else{
                 BCD_INP[i] = 0;
             }
-            #else
-            BCD_INP[i] = IP1_BCD_GetValue();
-            #endif
-           //convert_bcd_ext_inp_to_bcdval(&localbcdval);
-            //format_data_to_display(localbcdval, i);
-            
-        }
+        #else
+    BCD_INP[bcd_sel_sw_counter] = IP1_BCD_GetValue();
+    BCD_INP[6] =0;
+    BCD_INP[7] =0;
+    #endif
+
+        
 }
 
 void channel_switch(uint8_t ch)
